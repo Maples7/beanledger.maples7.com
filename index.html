@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BeanLedger - Privacy-first personal finance for iPhone, iPad, and Apple Watch</title>
+    <meta name="description" content="BeanLedger is a local-first double-entry personal finance app for iPhone, iPad, Apple Watch, and widgets. No account, no ads, no backend server.">
+    <meta name="theme-color" content="#f4efe3">
+    <meta property="og:title" content="BeanLedger">
+    <meta property="og:description" content="A local-first double-entry personal finance app for daily Transactions, assets, charts, widgets, and Apple Watch.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://beanledger.maples7.com/">
+    <meta property="og:image" content="https://beanledger.maples7.com/assets/screenshots/iphone-home.png">
+    <link rel="icon" href="assets/app-icon.png">
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4efe3;
+        --paper-deep: #e1d6bf;
+        --ink: #1d2a26;
+        --muted: #65736b;
+        --leaf: #2f7b57;
+        --leaf-dark: #1f573d;
+        --sky: #6c9fc3;
+        --clay: #c76445;
+        --gold: #d8a74a;
+        --line: rgba(29, 42, 38, 0.16);
+        --shadow: 0 24px 80px rgba(31, 47, 42, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 8%, rgba(216, 167, 74, 0.28), transparent 30rem),
+          linear-gradient(135deg, #f7f1e6 0%, #edf3ec 46%, #f5e1d3 100%);
+        color: var(--ink);
+        font-family: "Avenir Next", "SF Pro Text", "Helvetica Neue", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .site-shell {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .nav {
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem clamp(1rem, 4vw, 4rem);
+        background: rgba(244, 239, 227, 0.76);
+        border-bottom: 1px solid rgba(29, 42, 38, 0.08);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 2.3rem;
+        height: 2.3rem;
+        border-radius: 0.8rem;
+        box-shadow: 0 10px 24px rgba(31, 87, 61, 0.2);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(0.75rem, 2vw, 1.4rem);
+        font-size: 0.92rem;
+        color: rgba(29, 42, 38, 0.76);
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--leaf-dark);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.9rem;
+        padding: 0.75rem 1.05rem;
+        border-radius: 999px;
+        border: 1px solid rgba(29, 42, 38, 0.16);
+        background: rgba(255, 252, 245, 0.78);
+        color: var(--ink);
+        font-weight: 760;
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 28px rgba(31, 47, 42, 0.16);
+      }
+
+      .button.primary {
+        border-color: transparent;
+        background: var(--ink);
+        color: #fffaf0;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 92vh;
+        display: grid;
+        align-items: end;
+        padding: 7.5rem clamp(1.1rem, 4vw, 4.5rem) 4rem;
+        isolation: isolate;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        background:
+          linear-gradient(90deg, rgba(244, 239, 227, 0.96) 0%, rgba(244, 239, 227, 0.86) 34%, rgba(244, 239, 227, 0.22) 68%, rgba(244, 239, 227, 0.72) 100%),
+          linear-gradient(180deg, rgba(244, 239, 227, 0.12) 0%, rgba(244, 239, 227, 0.84) 100%);
+      }
+
+      .hero-art {
+        position: absolute;
+        inset: 4.5rem 0 0 36%;
+        z-index: -4;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(11rem, 18rem));
+        align-items: end;
+        justify-content: center;
+        gap: clamp(0.8rem, 2vw, 1.4rem);
+        transform: rotate(-4deg);
+        opacity: 0.96;
+      }
+
+      .phone-shot {
+        overflow: hidden;
+        border: 8px solid #17201d;
+        border-radius: 2.3rem;
+        background: #17201d;
+        box-shadow: var(--shadow);
+      }
+
+      .phone-shot:nth-child(2) {
+        transform: translateY(-4.5rem) rotate(6deg);
+      }
+
+      .phone-shot:nth-child(3) {
+        transform: translateY(2.2rem) rotate(8deg);
+      }
+
+      .hero-copy {
+        width: min(45rem, 100%);
+        padding-bottom: clamp(1rem, 5vh, 4rem);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin: 0 0 1.1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid rgba(47, 123, 87, 0.25);
+        border-radius: 999px;
+        background: rgba(238, 247, 238, 0.82);
+        color: var(--leaf-dark);
+        font-size: 0.86rem;
+        font-weight: 760;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "New York", "Iowan Old Style", Georgia, serif;
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 11ch;
+        font-size: clamp(4.2rem, 13vw, 10.8rem);
+      }
+
+      .hero-copy p {
+        max-width: 38rem;
+        margin: 1.3rem 0 0;
+        color: rgba(29, 42, 38, 0.78);
+        font-size: clamp(1.08rem, 2vw, 1.45rem);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1.8rem;
+      }
+
+      .hero-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-top: 1.55rem;
+        color: rgba(29, 42, 38, 0.68);
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .hero-proof span {
+        padding: 0.42rem 0.62rem;
+        border: 1px solid rgba(29, 42, 38, 0.12);
+        border-radius: 999px;
+        background: rgba(255, 252, 245, 0.58);
+      }
+
+      .section {
+        position: relative;
+        padding: clamp(4rem, 8vw, 7rem) clamp(1.1rem, 4vw, 4.5rem);
+      }
+
+      .section-inner {
+        width: min(73rem, 100%);
+        margin: 0 auto;
+      }
+
+      .section-kicker {
+        margin: 0 0 0.8rem;
+        color: var(--clay);
+        font-size: 0.86rem;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        max-width: 15ch;
+        font-size: clamp(2.4rem, 6vw, 5.5rem);
+      }
+
+      .section-lede {
+        max-width: 46rem;
+        margin: 1rem 0 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.5vw, 1.18rem);
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 2.4rem;
+      }
+
+      .feature {
+        min-height: 16rem;
+        padding: 1.25rem;
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+        background: rgba(255, 252, 245, 0.64);
+        box-shadow: 0 14px 40px rgba(31, 47, 42, 0.08);
+      }
+
+      .feature strong {
+        display: block;
+        margin-top: 2.2rem;
+        font-size: 1.08rem;
+      }
+
+      .feature p {
+        margin: 0.55rem 0 0;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .dot {
+        width: 1.85rem;
+        height: 1.85rem;
+        border-radius: 50%;
+        background: var(--leaf);
+        box-shadow: 1.2rem 0 0 var(--sky), 2.4rem 0 0 var(--gold);
+      }
+
+      .showcase {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: clamp(1.5rem, 5vw, 5rem);
+        align-items: center;
+      }
+
+      .watch-stack {
+        display: grid;
+        grid-template-columns: minmax(8rem, 15rem) minmax(12rem, 22rem);
+        gap: clamp(1rem, 3vw, 2rem);
+        align-items: end;
+      }
+
+      .watch-frame,
+      .phone-frame {
+        overflow: hidden;
+        border: 7px solid #17201d;
+        background: #17201d;
+        box-shadow: var(--shadow);
+      }
+
+      .watch-frame {
+        border-radius: 2rem;
+      }
+
+      .phone-frame {
+        border-radius: 2rem;
+        transform: translateY(2rem);
+      }
+
+      .privacy-band {
+        background:
+          linear-gradient(135deg, rgba(29, 42, 38, 0.97), rgba(31, 87, 61, 0.95)),
+          radial-gradient(circle at 70% 30%, rgba(216, 167, 74, 0.3), transparent 24rem);
+        color: #fff8ea;
+      }
+
+      .privacy-band .section-lede,
+      .privacy-band .feature p {
+        color: rgba(255, 248, 234, 0.74);
+      }
+
+      .privacy-band .feature {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 248, 234, 0.16);
+        box-shadow: none;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        align-items: stretch;
+      }
+
+      .gallery figure {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+        background: rgba(255, 252, 245, 0.7);
+        box-shadow: 0 20px 55px rgba(31, 47, 42, 0.12);
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+
+      .gallery .wide {
+        grid-row: span 2;
+      }
+
+      .footer {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 2rem;
+        padding: 2.4rem clamp(1.1rem, 4vw, 4.5rem);
+        border-top: 1px solid rgba(29, 42, 38, 0.12);
+        color: rgba(29, 42, 38, 0.72);
+        font-size: 0.92rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer a {
+        text-decoration: none;
+        font-weight: 760;
+      }
+
+      @media (max-width: 920px) {
+        .nav-links a:not(.button) {
+          display: none;
+        }
+
+        .hero {
+          min-height: 88vh;
+          padding-top: 6.5rem;
+        }
+
+        .hero-art {
+          inset: 5.5rem -8rem 0 22%;
+          grid-template-columns: repeat(3, 10rem);
+          opacity: 0.56;
+        }
+
+        .feature-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .showcase,
+        .gallery,
+        .footer {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery .wide {
+          grid-row: auto;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav {
+          padding-inline: 1rem;
+        }
+
+        .brand span {
+          display: none;
+        }
+
+        .hero {
+          min-height: 94vh;
+          padding-bottom: 3rem;
+        }
+
+        .hero-art {
+          inset: 4.8rem -9rem 0 12%;
+          grid-template-columns: repeat(3, 8.5rem);
+        }
+
+        h1 {
+          font-size: clamp(3.8rem, 20vw, 6rem);
+        }
+
+        .feature-grid,
+        .watch-stack {
+          grid-template-columns: 1fr;
+        }
+
+        .feature {
+          min-height: 12rem;
+        }
+
+        .phone-frame {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="BeanLedger home">
+          <img src="assets/app-icon.png" alt="BeanLedger app icon" width="96" height="96">
+          <span>BeanLedger</span>
+        </a>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#watch">Watch</a>
+          <a href="#privacy">Privacy</a>
+          <a class="button primary" href="https://apps.apple.com/app/id6739036460">Download</a>
+        </div>
+      </nav>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-art" aria-hidden="true">
+            <div class="phone-shot"><img src="assets/screenshots/iphone-home.png" alt="" width="415" height="900"></div>
+            <div class="phone-shot"><img src="assets/screenshots/iphone-capture.png" alt="" width="415" height="900"></div>
+            <div class="phone-shot"><img src="assets/screenshots/iphone-widgets.png" alt="" width="415" height="900"></div>
+          </div>
+          <div class="hero-copy">
+            <p class="eyebrow">Local-first finance, built for Apple devices</p>
+            <h1 id="hero-title">BeanLedger</h1>
+            <p>Double-entry personal finance for daily Transactions, assets, multi-currency accounts, charts, widgets, and Apple Watch. No account, no ads, no backend server.</p>
+            <div class="actions" aria-label="Primary actions">
+              <a class="button primary" href="https://apps.apple.com/app/id6739036460">Download on the App Store</a>
+              <a class="button" href="https://my.feishu.cn/wiki/OmKCwVtreii2j3kZFrCc0lzcnbb">User Guide</a>
+              <a class="button" href="https://my.feishu.cn/wiki/BYUQwg2KRidwW7ka2dJcWms6n2e">Support</a>
+            </div>
+            <div class="hero-proof" aria-label="Product qualities">
+              <span>On-device data</span>
+              <span>iCloud sync</span>
+              <span>iPhone, iPad, Apple Watch</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="features" aria-labelledby="features-title">
+          <div class="section-inner">
+            <p class="section-kicker">Everyday ledger, full asset picture</p>
+            <h2 id="features-title">Clear records without a finance back office.</h2>
+            <p class="section-lede">BeanLedger keeps the capture flow fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.</p>
+            <div class="feature-grid">
+              <article class="feature">
+                <div class="dot" aria-hidden="true"></div>
+                <strong>Fast double-entry capture</strong>
+                <p>Record income, expense, transfer, and investment Transactions with a calculator-style amount input and reusable account structure.</p>
+              </article>
+              <article class="feature">
+                <div class="dot" aria-hidden="true"></div>
+                <strong>Multi-currency accounts</strong>
+                <p>Track native balances, exchange rates, and local-currency summaries across cash, cards, savings, and investment accounts.</p>
+              </article>
+              <article class="feature">
+                <div class="dot" aria-hidden="true"></div>
+                <strong>Charts that explain movement</strong>
+                <p>Review asset Sankey flows, net worth K-line trends, income and expense comparisons, category breakdowns, and map memories.</p>
+              </article>
+              <article class="feature">
+                <div class="dot" aria-hidden="true"></div>
+                <strong>Plans, To-Do, and reminders</strong>
+                <p>Prepare recurring Transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="watch" aria-labelledby="watch-title">
+          <div class="section-inner showcase">
+            <div>
+              <p class="section-kicker">Watch and widgets</p>
+              <h2 id="watch-title">Capture and glance without opening the app.</h2>
+              <p class="section-lede">Apple Watch entry, complications, Home Screen widgets, Lock Screen widgets, Control Center quick capture, and Siri shortcuts keep the small financial moments close to where they happen.</p>
+            </div>
+            <div class="watch-stack" aria-label="BeanLedger Apple Watch and widget screenshots">
+              <div class="watch-frame"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch summary screen" width="410" height="502"></div>
+              <div class="phone-frame"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger iPhone widget overview" width="415" height="900"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section privacy-band" id="privacy" aria-labelledby="privacy-title">
+          <div class="section-inner">
+            <p class="section-kicker">Trust and privacy</p>
+            <h2 id="privacy-title">No proprietary server between you and your money.</h2>
+            <p class="section-lede">BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no advertising profile, and no third-party analytics script on this page.</p>
+            <div class="feature-grid">
+              <article class="feature">
+                <strong>Local-first by default</strong>
+                <p>Your records begin on your device, with iCloud used only for syncing across your Apple devices.</p>
+              </article>
+              <article class="feature">
+                <strong>Portable backups</strong>
+                <p>Automatic backups and restore support help keep long-term financial history recoverable.</p>
+              </article>
+              <article class="feature">
+                <strong>No sign-in pressure</strong>
+                <p>Open the app and start. BeanLedger does not require a separate web account.</p>
+              </article>
+              <article class="feature">
+                <strong>Pro stays practical</strong>
+                <p>BeanLedger Pro unlocks advanced features without turning the product into a hard-sell funnel.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="screenshots-title">
+          <div class="section-inner">
+            <p class="section-kicker">Screenshots</p>
+            <h2 id="screenshots-title">A ledger that stays readable at daily speed.</h2>
+            <p class="section-lede">The same native app experience appears in App Store screenshots, on the device, and in the quick surfaces you use throughout the day.</p>
+            <div class="gallery" aria-label="BeanLedger screenshot gallery">
+              <figure class="wide"><img src="assets/screenshots/iphone-home.png" alt="BeanLedger home dashboard" width="415" height="900"></figure>
+              <figure><img src="assets/screenshots/iphone-capture.png" alt="BeanLedger Transaction capture" width="415" height="900"></figure>
+              <figure><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widgets" width="415" height="900"></figure>
+              <figure><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch" width="410" height="502"></figure>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>
+          <strong>BeanLedger</strong><br>
+          Privacy-first personal finance for iPhone, iPad, Apple Watch, widgets, and iCloud.
+        </div>
+        <div class="footer-links" aria-label="Footer links">
+          <a href="https://apps.apple.com/app/id6739036460">App Store</a>
+          <a href="https://my.feishu.cn/wiki/OmKCwVtreii2j3kZFrCc0lzcnbb">User Guide</a>
+          <a href="https://my.feishu.cn/wiki/BYUQwg2KRidwW7ka2dJcWms6n2e">Support</a>
+          <a href="https://my.feishu.cn/wiki/RCTPwbGY6iIpdmkP4AUcWpFYn0b">Privacy Policy</a>
+          <a href="https://my.feishu.cn/wiki/INLGw3WtQiNyO1kOPWXcG2WEnQc">User Agreement</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

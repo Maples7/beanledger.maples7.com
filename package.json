@@ -1,0 +1,8 @@
+{
+  "name": "beanledger-marketing-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "site:lint": "python3 scripts/validate_site.py"
+  }
+}
