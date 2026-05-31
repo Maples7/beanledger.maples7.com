@@ -15,50 +15,38 @@
     <style>
       :root {
         color-scheme: light;
-        --paper: #f4efe3;
-        --paper-deep: #e1d6bf;
-        --ink: #1d2a26;
-        --muted: #65736b;
-        --leaf: #2f7b57;
-        --leaf-dark: #1f573d;
-        --sky: #6c9fc3;
-        --clay: #c76445;
-        --gold: #d8a74a;
-        --line: rgba(29, 42, 38, 0.16);
-        --shadow: 0 24px 80px rgba(31, 47, 42, 0.22);
+        --paper: #f5efe2;
+        --paper-soft: #fff9ed;
+        --ink: #17231f;
+        --ink-soft: #53615a;
+        --leaf: #2b7653;
+        --leaf-deep: #17231f;
+        --mint: #dff0e6;
+        --sky: #84b7d6;
+        --coral: #cf6848;
+        --gold: #d8a94e;
+        --line: rgba(23, 35, 31, 0.14);
+        --shadow: 0 24px 80px rgba(23, 35, 31, 0.18);
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
         background:
-          radial-gradient(circle at 12% 8%, rgba(216, 167, 74, 0.28), transparent 30rem),
-          linear-gradient(135deg, #f7f1e6 0%, #edf3ec 46%, #f5e1d3 100%);
+          radial-gradient(circle at 16% 10%, rgba(216, 169, 78, 0.32), transparent 26rem),
+          radial-gradient(circle at 86% 18%, rgba(132, 183, 214, 0.2), transparent 30rem),
+          linear-gradient(135deg, #f7efe1 0%, #eef5ec 48%, #f6e0d2 100%);
         color: var(--ink);
-        font-family: "Avenir Next", "SF Pro Text", "Helvetica Neue", sans-serif;
-        line-height: 1.55;
+        font-family: Avenir Next, SF Pro Text, Helvetica Neue, sans-serif;
+        line-height: 1.56;
       }
 
-      a {
-        color: inherit;
-      }
+      a { color: inherit; }
+      img { display: block; max-width: 100%; height: auto; }
 
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      .site-shell {
-        min-height: 100vh;
-        overflow: hidden;
-      }
+      .site-shell { min-height: 100vh; overflow: hidden; }
 
       .nav {
         position: fixed;
@@ -70,67 +58,82 @@
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
-        padding: 1rem clamp(1rem, 4vw, 4rem);
-        background: rgba(244, 239, 227, 0.76);
-        border-bottom: 1px solid rgba(29, 42, 38, 0.08);
-        backdrop-filter: blur(18px);
+        padding: 0.85rem clamp(1rem, 4vw, 4rem);
+        background: rgba(245, 239, 226, 0.86);
+        border-bottom: 1px solid rgba(23, 35, 31, 0.09);
+        backdrop-filter: blur(20px);
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
         gap: 0.7rem;
-        font-weight: 800;
+        font-weight: 850;
         letter-spacing: 0;
         text-decoration: none;
       }
 
       .brand img {
-        width: 2.3rem;
-        height: 2.3rem;
+        width: 2.35rem;
+        height: 2.35rem;
         border-radius: 0.8rem;
-        box-shadow: 0 10px 24px rgba(31, 87, 61, 0.2);
+        box-shadow: 0 10px 24px rgba(43, 118, 83, 0.2);
       }
 
+      .nav-actions,
       .nav-links {
         display: flex;
         align-items: center;
-        gap: clamp(0.75rem, 2vw, 1.4rem);
-        font-size: 0.92rem;
-        color: rgba(29, 42, 38, 0.76);
+        gap: clamp(0.7rem, 1.6vw, 1.2rem);
       }
 
       .nav-links a {
+        color: rgba(23, 35, 31, 0.72);
+        font-size: 0.92rem;
+        font-weight: 650;
         text-decoration: none;
       }
 
-      .nav-links a:hover {
-        color: var(--leaf-dark);
+      .nav-links a:hover { color: var(--leaf); }
+
+      .language-select {
+        min-height: 2.4rem;
+        max-width: 9.6rem;
+        border: 1px solid rgba(23, 35, 31, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 249, 237, 0.82);
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.86rem;
+        font-weight: 700;
+        padding: 0 2rem 0 0.85rem;
       }
 
       .button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 2.9rem;
-        padding: 0.75rem 1.05rem;
+        min-height: 2.85rem;
+        padding: 0.72rem 1.05rem;
         border-radius: 999px;
-        border: 1px solid rgba(29, 42, 38, 0.16);
-        background: rgba(255, 252, 245, 0.78);
+        border: 1px solid rgba(23, 35, 31, 0.16);
+        background: rgba(255, 249, 237, 0.86);
         color: var(--ink);
-        font-weight: 760;
+        font-size: 0.92rem;
+        font-weight: 820;
         text-decoration: none;
+        white-space: nowrap;
         transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
       }
 
       .button:hover {
         transform: translateY(-1px);
-        box-shadow: 0 14px 28px rgba(31, 47, 42, 0.16);
+        box-shadow: 0 14px 28px rgba(23, 35, 31, 0.14);
       }
 
       .button.primary {
         border-color: transparent;
-        background: var(--ink);
+        background: var(--leaf-deep);
         color: #fffaf0;
       }
 
@@ -138,8 +141,10 @@
         position: relative;
         min-height: 92vh;
         display: grid;
-        align-items: end;
-        padding: 7.5rem clamp(1.1rem, 4vw, 4.5rem) 4rem;
+        grid-template-columns: minmax(0, 0.86fr) minmax(20rem, 1.14fr);
+        align-items: center;
+        gap: clamp(2rem, 5vw, 5.5rem);
+        padding: 7rem clamp(1.1rem, 4vw, 4.5rem) 4.5rem;
         isolation: isolate;
       }
 
@@ -149,85 +154,52 @@
         inset: 0;
         z-index: -3;
         background:
-          linear-gradient(90deg, rgba(244, 239, 227, 0.96) 0%, rgba(244, 239, 227, 0.86) 34%, rgba(244, 239, 227, 0.22) 68%, rgba(244, 239, 227, 0.72) 100%),
-          linear-gradient(180deg, rgba(244, 239, 227, 0.12) 0%, rgba(244, 239, 227, 0.84) 100%);
+          linear-gradient(90deg, rgba(245, 239, 226, 0.96) 0%, rgba(245, 239, 226, 0.88) 38%, rgba(245, 239, 226, 0.24) 74%, rgba(245, 239, 226, 0.7) 100%),
+          linear-gradient(180deg, rgba(245, 239, 226, 0.1) 0%, rgba(245, 239, 226, 0.84) 100%);
       }
 
-      .hero-art {
-        position: absolute;
-        inset: 4.5rem 0 0 36%;
-        z-index: -4;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(11rem, 18rem));
-        align-items: end;
-        justify-content: center;
-        gap: clamp(0.8rem, 2vw, 1.4rem);
-        transform: rotate(-4deg);
-        opacity: 0.96;
-      }
-
-      .phone-shot {
-        overflow: hidden;
-        border: 8px solid #17201d;
-        border-radius: 2.3rem;
-        background: #17201d;
-        box-shadow: var(--shadow);
-      }
-
-      .phone-shot:nth-child(2) {
-        transform: translateY(-4.5rem) rotate(6deg);
-      }
-
-      .phone-shot:nth-child(3) {
-        transform: translateY(2.2rem) rotate(8deg);
-      }
-
-      .hero-copy {
-        width: min(45rem, 100%);
-        padding-bottom: clamp(1rem, 5vh, 4rem);
-      }
+      .hero-copy { width: min(45rem, 100%); }
 
       .eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
         margin: 0 0 1.1rem;
-        padding: 0.35rem 0.75rem;
-        border: 1px solid rgba(47, 123, 87, 0.25);
+        padding: 0.36rem 0.78rem;
+        border: 1px solid rgba(43, 118, 83, 0.24);
         border-radius: 999px;
-        background: rgba(238, 247, 238, 0.82);
-        color: var(--leaf-dark);
-        font-size: 0.86rem;
-        font-weight: 760;
+        background: rgba(223, 240, 230, 0.82);
+        color: #245f45;
+        font-size: 0.88rem;
+        font-weight: 820;
       }
 
       h1,
       h2,
       h3 {
         margin: 0;
-        font-family: "New York", "Iowan Old Style", Georgia, serif;
-        font-weight: 800;
+        font-family: New York, Iowan Old Style, Georgia, serif;
+        font-weight: 850;
         line-height: 0.98;
         letter-spacing: 0;
       }
 
       h1 {
         max-width: 11ch;
-        font-size: clamp(4.2rem, 13vw, 10.8rem);
+        font-size: clamp(4.4rem, 11vw, 10.4rem);
       }
 
       .hero-copy p {
         max-width: 38rem;
-        margin: 1.3rem 0 0;
-        color: rgba(29, 42, 38, 0.78);
-        font-size: clamp(1.08rem, 2vw, 1.45rem);
+        margin: 1.25rem 0 0;
+        color: rgba(23, 35, 31, 0.78);
+        font-size: clamp(1.08rem, 2vw, 1.42rem);
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 0.8rem;
-        margin-top: 1.8rem;
+        margin-top: 1.75rem;
       }
 
       .hero-proof {
@@ -235,46 +207,82 @@
         flex-wrap: wrap;
         gap: 0.65rem;
         margin-top: 1.55rem;
-        color: rgba(29, 42, 38, 0.68);
-        font-size: 0.92rem;
-        font-weight: 700;
+        color: rgba(23, 35, 31, 0.68);
+        font-size: 0.9rem;
+        font-weight: 760;
       }
 
       .hero-proof span {
         padding: 0.42rem 0.62rem;
-        border: 1px solid rgba(29, 42, 38, 0.12);
+        border: 1px solid rgba(23, 35, 31, 0.12);
         border-radius: 999px;
-        background: rgba(255, 252, 245, 0.58);
+        background: rgba(255, 249, 237, 0.62);
       }
+
+      .poster-stage { position: relative; min-height: 44rem; }
+
+      .poster-stack {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(8rem, 16rem));
+        justify-content: end;
+        align-items: center;
+        gap: clamp(0.9rem, 2vw, 1.4rem);
+        transform: rotate(-3deg);
+      }
+
+      .poster-card,
+      .gallery-card,
+      .widget-card,
+      .watch-card {
+        overflow: hidden;
+        border: 1px solid rgba(23, 35, 31, 0.12);
+        border-radius: 1rem;
+        background: rgba(255, 249, 237, 0.76);
+        box-shadow: var(--shadow);
+      }
+
+      .poster-card,
+      .gallery-card,
+      .widget-card { aspect-ratio: 396 / 860; }
+      .watch-card, .gallery-card.watch { aspect-ratio: 424 / 520; }
+
+      .poster-card img,
+      .gallery-card img,
+      .widget-card img,
+      .watch-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .poster-card:nth-child(1) { transform: translateY(2rem); }
+      .poster-card:nth-child(2) { transform: translateY(-2.5rem) rotate(4deg); }
+      .poster-card:nth-child(3) { transform: translateY(2.8rem) rotate(7deg); }
 
       .section {
         position: relative;
         padding: clamp(4rem, 8vw, 7rem) clamp(1.1rem, 4vw, 4.5rem);
       }
 
-      .section-inner {
-        width: min(73rem, 100%);
-        margin: 0 auto;
-      }
+      .section-inner { width: min(73rem, 100%); margin: 0 auto; }
 
       .section-kicker {
         margin: 0 0 0.8rem;
-        color: var(--clay);
+        color: var(--coral);
         font-size: 0.86rem;
-        font-weight: 850;
+        font-weight: 880;
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      h2 {
-        max-width: 15ch;
-        font-size: clamp(2.4rem, 6vw, 5.5rem);
-      }
+      h2 { max-width: 16ch; font-size: clamp(2.4rem, 5.8vw, 5.2rem); }
 
       .section-lede {
         max-width: 46rem;
         margin: 1rem 0 0;
-        color: var(--muted);
+        color: var(--ink-soft);
         font-size: clamp(1rem, 1.5vw, 1.18rem);
       }
 
@@ -286,25 +294,16 @@
       }
 
       .feature {
-        min-height: 16rem;
+        min-height: 15rem;
         padding: 1.25rem;
         border: 1px solid var(--line);
-        border-radius: 0.5rem;
-        background: rgba(255, 252, 245, 0.64);
-        box-shadow: 0 14px 40px rgba(31, 47, 42, 0.08);
+        border-radius: 0.75rem;
+        background: rgba(255, 249, 237, 0.66);
+        box-shadow: 0 14px 40px rgba(23, 35, 31, 0.08);
       }
 
-      .feature strong {
-        display: block;
-        margin-top: 2.2rem;
-        font-size: 1.08rem;
-      }
-
-      .feature p {
-        margin: 0.55rem 0 0;
-        color: var(--muted);
-        font-size: 0.96rem;
-      }
+      .feature strong { display: block; margin-top: 2.1rem; font-size: 1.08rem; }
+      .feature p { margin: 0.55rem 0 0; color: var(--ink-soft); font-size: 0.96rem; }
 
       .dot {
         width: 1.85rem;
@@ -323,39 +322,20 @@
 
       .watch-stack {
         display: grid;
-        grid-template-columns: minmax(8rem, 15rem) minmax(12rem, 22rem);
+        grid-template-columns: minmax(9rem, 16rem) minmax(12rem, 23rem);
         gap: clamp(1rem, 3vw, 2rem);
-        align-items: end;
-      }
-
-      .watch-frame,
-      .phone-frame {
-        overflow: hidden;
-        border: 7px solid #17201d;
-        background: #17201d;
-        box-shadow: var(--shadow);
-      }
-
-      .watch-frame {
-        border-radius: 2rem;
-      }
-
-      .phone-frame {
-        border-radius: 2rem;
-        transform: translateY(2rem);
+        align-items: center;
       }
 
       .privacy-band {
         background:
-          linear-gradient(135deg, rgba(29, 42, 38, 0.97), rgba(31, 87, 61, 0.95)),
-          radial-gradient(circle at 70% 30%, rgba(216, 167, 74, 0.3), transparent 24rem);
+          linear-gradient(135deg, rgba(23, 35, 31, 0.97), rgba(31, 87, 61, 0.95)),
+          radial-gradient(circle at 70% 30%, rgba(216, 169, 78, 0.3), transparent 24rem);
         color: #fff8ea;
       }
 
       .privacy-band .section-lede,
-      .privacy-band .feature p {
-        color: rgba(255, 248, 234, 0.74);
-      }
+      .privacy-band .feature p { color: rgba(255, 248, 234, 0.74); }
 
       .privacy-band .feature {
         background: rgba(255, 255, 255, 0.08);
@@ -365,119 +345,56 @@
 
       .gallery {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr 0.8fr;
-        gap: 1rem;
+        grid-template-columns: minmax(14rem, 1fr) minmax(14rem, 1fr) minmax(14rem, 1fr);
+        gap: 1.15rem;
         margin-top: 2.5rem;
-        align-items: stretch;
-      }
-
-      .gallery figure {
-        margin: 0;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 0.5rem;
-        background: rgba(255, 252, 245, 0.7);
-        box-shadow: 0 20px 55px rgba(31, 47, 42, 0.12);
-      }
-
-      .gallery img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top center;
-      }
-
-      .gallery .wide {
-        grid-row: span 2;
+        align-items: start;
       }
 
       .footer {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
         gap: 2rem;
         padding: 2.4rem clamp(1.1rem, 4vw, 4.5rem);
-        border-top: 1px solid rgba(29, 42, 38, 0.12);
-        color: rgba(29, 42, 38, 0.72);
-        font-size: 0.92rem;
+        border-top: 1px solid rgba(23, 35, 31, 0.12);
+        color: rgba(23, 35, 31, 0.72);
+        font-size: 0.94rem;
       }
 
       .footer-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        justify-content: flex-end;
+        gap: 0.75rem 1rem;
       }
 
-      .footer a {
-        text-decoration: none;
-        font-weight: 760;
+      .footer a { text-decoration: none; font-weight: 760; }
+
+      @media (max-width: 1020px) {
+        .hero, .showcase, .footer { grid-template-columns: 1fr; }
+        .poster-stage { min-height: 34rem; order: -1; opacity: 0.72; }
+        .poster-stack { justify-content: center; grid-template-columns: repeat(3, minmax(7.5rem, 12rem)); }
+        .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .footer-links { justify-content: flex-start; }
       }
 
-      @media (max-width: 920px) {
-        .nav-links a:not(.button) {
-          display: none;
-        }
-
-        .hero {
-          min-height: 88vh;
-          padding-top: 6.5rem;
-        }
-
-        .hero-art {
-          inset: 5.5rem -8rem 0 22%;
-          grid-template-columns: repeat(3, 10rem);
-          opacity: 0.56;
-        }
-
-        .feature-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .showcase,
-        .gallery,
-        .footer {
-          grid-template-columns: 1fr;
-        }
-
-        .gallery .wide {
-          grid-row: auto;
-        }
+      @media (max-width: 720px) {
+        .nav-links a:not(.button) { display: none; }
+        .language-select { max-width: 7.5rem; }
+        .hero { min-height: auto; padding-top: 6rem; }
+        .poster-stage { min-height: 24rem; }
+        .poster-stack { grid-template-columns: repeat(3, minmax(6rem, 8.5rem)); }
+        h1 { font-size: clamp(3.6rem, 19vw, 5.8rem); }
+        .feature-grid, .watch-stack, .gallery { grid-template-columns: 1fr; }
+        .feature { min-height: 12rem; }
       }
 
-      @media (max-width: 560px) {
-        .nav {
-          padding-inline: 1rem;
-        }
-
-        .brand span {
-          display: none;
-        }
-
-        .hero {
-          min-height: 94vh;
-          padding-bottom: 3rem;
-        }
-
-        .hero-art {
-          inset: 4.8rem -9rem 0 12%;
-          grid-template-columns: repeat(3, 8.5rem);
-        }
-
-        h1 {
-          font-size: clamp(3.8rem, 20vw, 6rem);
-        }
-
-        .feature-grid,
-        .watch-stack {
-          grid-template-columns: 1fr;
-        }
-
-        .feature {
-          min-height: 12rem;
-        }
-
-        .phone-frame {
-          transform: none;
-        }
+      @media (max-width: 480px) {
+        .brand span { display: none; }
+        .nav-actions { gap: 0.45rem; }
+        .nav .button.primary { display: none; }
+        .poster-stage { min-height: 20rem; }
+        .poster-stack { grid-template-columns: repeat(3, 6.6rem); transform: rotate(-2deg) translateX(1rem); }
       }
     </style>
   </head>
@@ -488,64 +405,71 @@
           <img src="assets/app-icon.png" alt="BeanLedger app icon" width="96" height="96">
           <span>BeanLedger</span>
         </a>
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#watch">Watch</a>
-          <a href="#privacy">Privacy</a>
-          <a class="button primary" href="https://apps.apple.com/app/id6739036460">Download</a>
+        <div class="nav-actions">
+          <div class="nav-links">
+            <a href="#features" data-i18n="nav.features">Features</a>
+            <a href="#watch" data-i18n="nav.watch">Watch</a>
+            <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
+          </div>
+          <select class="language-select" id="language-select" aria-label="Language">
+            <option value="en-US">English</option>
+            <option value="zh-Hans">简体中文</option>
+            <option value="zh-Hant">繁體中文</option>
+            <option value="de-DE">Deutsch</option>
+            <option value="es-ES">Español</option>
+            <option value="fr-FR">Français</option>
+            <option value="it">Italiano</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="ms">Melayu</option>
+            <option value="nl-NL">Nederlands</option>
+            <option value="pl">Polski</option>
+            <option value="pt-BR">Português</option>
+            <option value="ru">Русский</option>
+            <option value="th">ไทย</option>
+            <option value="tr">Türkçe</option>
+            <option value="vi">Tiếng Việt</option>
+          </select>
+          <a class="button primary" href="https://apps.apple.com/app/id6739036460" data-i18n="nav.download">Download</a>
         </div>
       </nav>
 
       <main id="top">
         <section class="hero" aria-labelledby="hero-title">
-          <div class="hero-art" aria-hidden="true">
-            <div class="phone-shot"><img src="assets/screenshots/iphone-home.png" alt="" width="415" height="900"></div>
-            <div class="phone-shot"><img src="assets/screenshots/iphone-capture.png" alt="" width="415" height="900"></div>
-            <div class="phone-shot"><img src="assets/screenshots/iphone-widgets.png" alt="" width="415" height="900"></div>
-          </div>
           <div class="hero-copy">
-            <p class="eyebrow">Local-first finance, built for Apple devices</p>
+            <p class="eyebrow" data-i18n="hero.eyebrow">Local-first finance, built for Apple devices</p>
             <h1 id="hero-title">BeanLedger</h1>
-            <p>Double-entry personal finance for daily Transactions, assets, multi-currency accounts, charts, widgets, and Apple Watch. No account, no ads, no backend server.</p>
+            <p data-i18n="hero.lede">Double-entry personal finance for daily Transactions, assets, multi-currency accounts, charts, widgets, and Apple Watch. No account, no ads, no backend server.</p>
             <div class="actions" aria-label="Primary actions">
-              <a class="button primary" href="https://apps.apple.com/app/id6739036460">Download on the App Store</a>
-              <a class="button" href="https://my.feishu.cn/wiki/OmKCwVtreii2j3kZFrCc0lzcnbb">User Guide</a>
-              <a class="button" href="https://my.feishu.cn/wiki/BYUQwg2KRidwW7ka2dJcWms6n2e">Support</a>
+              <a class="button primary" href="https://apps.apple.com/app/id6739036460" data-i18n="cta.appStore">Download on the App Store</a>
+              <a class="button" href="https://my.feishu.cn/wiki/ZThAw9DpIiP1c5kpA5ecevW7n0g" data-i18n="cta.guide">User Guide</a>
+              <a class="button" href="https://my.feishu.cn/wiki/LMQ7wdGL5iYMySkqAjFcPa7xnjf" data-i18n="cta.support">Support</a>
             </div>
             <div class="hero-proof" aria-label="Product qualities">
-              <span>On-device data</span>
-              <span>iCloud sync</span>
-              <span>iPhone, iPad, Apple Watch</span>
+              <span data-i18n="proof.local">On-device data</span>
+              <span data-i18n="proof.icloud">iCloud sync</span>
+              <span data-i18n="proof.apple">iPhone, iPad, Apple Watch</span>
+            </div>
+          </div>
+          <div class="poster-stage" aria-hidden="true">
+            <div class="poster-stack">
+              <div class="poster-card"><img src="assets/screenshots/iphone-home.png" alt="" width="396" height="860"></div>
+              <div class="poster-card"><img src="assets/screenshots/iphone-capture.png" alt="" width="396" height="860"></div>
+              <div class="poster-card"><img src="assets/screenshots/iphone-widgets.png" alt="" width="396" height="860"></div>
             </div>
           </div>
         </section>
 
         <section class="section" id="features" aria-labelledby="features-title">
           <div class="section-inner">
-            <p class="section-kicker">Everyday ledger, full asset picture</p>
-            <h2 id="features-title">Clear records without a finance back office.</h2>
-            <p class="section-lede">BeanLedger keeps the capture flow fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.</p>
+            <p class="section-kicker" data-i18n="features.kicker">Everyday ledger, full asset picture</p>
+            <h2 id="features-title" data-i18n="features.title">Clear records without a finance back office.</h2>
+            <p class="section-lede" data-i18n="features.lede">BeanLedger keeps capture fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.</p>
             <div class="feature-grid">
-              <article class="feature">
-                <div class="dot" aria-hidden="true"></div>
-                <strong>Fast double-entry capture</strong>
-                <p>Record income, expense, transfer, and investment Transactions with a calculator-style amount input and reusable account structure.</p>
-              </article>
-              <article class="feature">
-                <div class="dot" aria-hidden="true"></div>
-                <strong>Multi-currency accounts</strong>
-                <p>Track native balances, exchange rates, and local-currency summaries across cash, cards, savings, and investment accounts.</p>
-              </article>
-              <article class="feature">
-                <div class="dot" aria-hidden="true"></div>
-                <strong>Charts that explain movement</strong>
-                <p>Review asset Sankey flows, net worth K-line trends, income and expense comparisons, category breakdowns, and map memories.</p>
-              </article>
-              <article class="feature">
-                <div class="dot" aria-hidden="true"></div>
-                <strong>Plans, To-Do, and reminders</strong>
-                <p>Prepare recurring Transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.</p>
-              </article>
+              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.fast.title">Fast double-entry capture</strong><p data-i18n="features.fast.body">Record income, expense, transfer, and investment Transactions with a calculator-style amount input and reusable account structure.</p></article>
+              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.currency.title">Multi-currency accounts</strong><p data-i18n="features.currency.body">Track native balances, exchange rates, and local-currency summaries across cash, cards, savings, and investment accounts.</p></article>
+              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.charts.title">Charts that explain movement</strong><p data-i18n="features.charts.body">Review asset Sankey flows, net worth K-line trends, income and expense comparisons, category breakdowns, and map memories.</p></article>
+              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.plans.title">Plans, To-Do, and reminders</strong><p data-i18n="features.plans.body">Prepare recurring Transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.</p></article>
             </div>
           </div>
         </section>
@@ -553,71 +477,208 @@
         <section class="section" id="watch" aria-labelledby="watch-title">
           <div class="section-inner showcase">
             <div>
-              <p class="section-kicker">Watch and widgets</p>
-              <h2 id="watch-title">Capture and glance without opening the app.</h2>
-              <p class="section-lede">Apple Watch entry, complications, Home Screen widgets, Lock Screen widgets, Control Center quick capture, and Siri shortcuts keep the small financial moments close to where they happen.</p>
+              <p class="section-kicker" data-i18n="watch.kicker">Watch and widgets</p>
+              <h2 id="watch-title" data-i18n="watch.title">Capture and glance without opening the app.</h2>
+              <p class="section-lede" data-i18n="watch.lede">Apple Watch entry, complications, Home Screen widgets, Lock Screen widgets, Control Center quick capture, and Siri shortcuts keep small financial moments close to where they happen.</p>
             </div>
             <div class="watch-stack" aria-label="BeanLedger Apple Watch and widget screenshots">
-              <div class="watch-frame"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch summary screen" width="410" height="502"></div>
-              <div class="phone-frame"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger iPhone widget overview" width="415" height="900"></div>
+              <div class="watch-card"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch summary screen" width="424" height="520"></div>
+              <div class="widget-card"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widget overview" width="396" height="860"></div>
             </div>
           </div>
         </section>
 
         <section class="section privacy-band" id="privacy" aria-labelledby="privacy-title">
           <div class="section-inner">
-            <p class="section-kicker">Trust and privacy</p>
-            <h2 id="privacy-title">No proprietary server between you and your money.</h2>
-            <p class="section-lede">BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no advertising profile, and no third-party analytics script on this page.</p>
+            <p class="section-kicker" data-i18n="privacy.kicker">Trust and privacy</p>
+            <h2 id="privacy-title" data-i18n="privacy.title">No proprietary server between you and your money.</h2>
+            <p class="section-lede" data-i18n="privacy.lede">BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no advertising profile, and no third-party analytics script on this page.</p>
             <div class="feature-grid">
-              <article class="feature">
-                <strong>Local-first by default</strong>
-                <p>Your records begin on your device, with iCloud used only for syncing across your Apple devices.</p>
-              </article>
-              <article class="feature">
-                <strong>Portable backups</strong>
-                <p>Automatic backups and restore support help keep long-term financial history recoverable.</p>
-              </article>
-              <article class="feature">
-                <strong>No sign-in pressure</strong>
-                <p>Open the app and start. BeanLedger does not require a separate web account.</p>
-              </article>
-              <article class="feature">
-                <strong>Pro stays practical</strong>
-                <p>BeanLedger Pro unlocks advanced features without turning the product into a hard-sell funnel.</p>
-              </article>
+              <article class="feature"><strong data-i18n="privacy.local.title">Local-first by default</strong><p data-i18n="privacy.local.body">Your records begin on your device, with iCloud used only for syncing across your Apple devices.</p></article>
+              <article class="feature"><strong data-i18n="privacy.backup.title">Portable backups</strong><p data-i18n="privacy.backup.body">Automatic backups and restore support help keep long-term financial history recoverable.</p></article>
+              <article class="feature"><strong data-i18n="privacy.signin.title">No sign-in pressure</strong><p data-i18n="privacy.signin.body">Open the app and start. BeanLedger does not require a separate web account.</p></article>
+              <article class="feature"><strong data-i18n="privacy.pro.title">Pro stays practical</strong><p data-i18n="privacy.pro.body">BeanLedger Pro unlocks advanced features without turning the product into a hard-sell funnel.</p></article>
             </div>
           </div>
         </section>
 
         <section class="section" aria-labelledby="screenshots-title">
           <div class="section-inner">
-            <p class="section-kicker">Screenshots</p>
-            <h2 id="screenshots-title">A ledger that stays readable at daily speed.</h2>
-            <p class="section-lede">The same native app experience appears in App Store screenshots, on the device, and in the quick surfaces you use throughout the day.</p>
+            <p class="section-kicker" data-i18n="gallery.kicker">Screenshots</p>
+            <h2 id="screenshots-title" data-i18n="gallery.title">A ledger that stays readable at daily speed.</h2>
+            <p class="section-lede" data-i18n="gallery.lede">The same native app experience appears in App Store screenshots, on the device, and in the quick surfaces you use throughout the day.</p>
             <div class="gallery" aria-label="BeanLedger screenshot gallery">
-              <figure class="wide"><img src="assets/screenshots/iphone-home.png" alt="BeanLedger home dashboard" width="415" height="900"></figure>
-              <figure><img src="assets/screenshots/iphone-capture.png" alt="BeanLedger Transaction capture" width="415" height="900"></figure>
-              <figure><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widgets" width="415" height="900"></figure>
-              <figure><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch" width="410" height="502"></figure>
+              <figure class="gallery-card"><img src="assets/screenshots/iphone-home.png" alt="BeanLedger home dashboard" width="396" height="860"></figure>
+              <figure class="gallery-card"><img src="assets/screenshots/iphone-capture.png" alt="BeanLedger Transaction capture" width="396" height="860"></figure>
+              <figure class="gallery-card"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widgets" width="396" height="860"></figure>
+              <figure class="gallery-card watch"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch" width="424" height="520"></figure>
             </div>
           </div>
         </section>
       </main>
 
       <footer class="footer">
-        <div>
-          <strong>BeanLedger</strong><br>
-          Privacy-first personal finance for iPhone, iPad, Apple Watch, widgets, and iCloud.
-        </div>
+        <div><strong>BeanLedger</strong><br><span data-i18n="footer.tagline">Privacy-first personal finance for iPhone, iPad, Apple Watch, widgets, and iCloud.</span></div>
         <div class="footer-links" aria-label="Footer links">
-          <a href="https://apps.apple.com/app/id6739036460">App Store</a>
-          <a href="https://my.feishu.cn/wiki/OmKCwVtreii2j3kZFrCc0lzcnbb">User Guide</a>
-          <a href="https://my.feishu.cn/wiki/BYUQwg2KRidwW7ka2dJcWms6n2e">Support</a>
-          <a href="https://my.feishu.cn/wiki/RCTPwbGY6iIpdmkP4AUcWpFYn0b">Privacy Policy</a>
-          <a href="https://my.feishu.cn/wiki/INLGw3WtQiNyO1kOPWXcG2WEnQc">User Agreement</a>
+          <a href="https://apps.apple.com/app/id6739036460" data-i18n="footer.appStore">App Store</a>
+          <a href="https://my.feishu.cn/wiki/ZThAw9DpIiP1c5kpA5ecevW7n0g" data-i18n="footer.guide">User Guide</a>
+          <a href="https://my.feishu.cn/wiki/LMQ7wdGL5iYMySkqAjFcPa7xnjf" data-i18n="footer.support">Support</a>
+          <a href="https://my.feishu.cn/wiki/CAsdwDoQCi7GNXk94locljnnnwd" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="https://my.feishu.cn/wiki/CAsdwDoQCi7GNXk94locljnnnwd" data-i18n="footer.agreement">User Agreement</a>
         </div>
       </footer>
     </div>
+
+    <script>
+      const baseCopy = {
+        'nav.features': 'Features', 'nav.watch': 'Watch', 'nav.privacy': 'Privacy', 'nav.download': 'Download',
+        'hero.eyebrow': 'Local-first finance, built for Apple devices',
+        'hero.lede': 'Double-entry personal finance for daily Transactions, assets, multi-currency accounts, charts, widgets, and Apple Watch. No account, no ads, no backend server.',
+        'cta.appStore': 'Download on the App Store', 'cta.guide': 'User Guide', 'cta.support': 'Support',
+        'proof.local': 'On-device data', 'proof.icloud': 'iCloud sync', 'proof.apple': 'iPhone, iPad, Apple Watch',
+        'features.kicker': 'Everyday ledger, full asset picture', 'features.title': 'Clear records without a finance back office.',
+        'features.lede': 'BeanLedger keeps capture fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.',
+        'features.fast.title': 'Fast double-entry capture', 'features.fast.body': 'Record income, expense, transfer, and investment Transactions with a calculator-style amount input and reusable account structure.',
+        'features.currency.title': 'Multi-currency accounts', 'features.currency.body': 'Track native balances, exchange rates, and local-currency summaries across cash, cards, savings, and investment accounts.',
+        'features.charts.title': 'Charts that explain movement', 'features.charts.body': 'Review asset Sankey flows, net worth K-line trends, income and expense comparisons, category breakdowns, and map memories.',
+        'features.plans.title': 'Plans, To-Do, and reminders', 'features.plans.body': 'Prepare recurring Transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.',
+        'watch.kicker': 'Watch and widgets', 'watch.title': 'Capture and glance without opening the app.',
+        'watch.lede': 'Apple Watch entry, complications, Home Screen widgets, Lock Screen widgets, Control Center quick capture, and Siri shortcuts keep small financial moments close to where they happen.',
+        'privacy.kicker': 'Trust and privacy', 'privacy.title': 'No proprietary server between you and your money.',
+        'privacy.lede': 'BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no advertising profile, and no third-party analytics script on this page.',
+        'privacy.local.title': 'Local-first by default', 'privacy.local.body': 'Your records begin on your device, with iCloud used only for syncing across your Apple devices.',
+        'privacy.backup.title': 'Portable backups', 'privacy.backup.body': 'Automatic backups and restore support help keep long-term financial history recoverable.',
+        'privacy.signin.title': 'No sign-in pressure', 'privacy.signin.body': 'Open the app and start. BeanLedger does not require a separate web account.',
+        'privacy.pro.title': 'Pro stays practical', 'privacy.pro.body': 'BeanLedger Pro unlocks advanced features without turning the product into a hard-sell funnel.',
+        'gallery.kicker': 'Screenshots', 'gallery.title': 'A ledger that stays readable at daily speed.',
+        'gallery.lede': 'The same native app experience appears in App Store screenshots, on the device, and in the quick surfaces you use throughout the day.',
+        'footer.tagline': 'Privacy-first personal finance for iPhone, iPad, Apple Watch, widgets, and iCloud.',
+        'footer.appStore': 'App Store', 'footer.guide': 'User Guide', 'footer.support': 'Support', 'footer.privacy': 'Privacy Policy', 'footer.agreement': 'User Agreement',
+        metaTitle: 'BeanLedger - Privacy-first personal finance for iPhone, iPad, and Apple Watch',
+        metaDescription: 'BeanLedger is a local-first double-entry personal finance app for iPhone, iPad, Apple Watch, and widgets. No account, no ads, no backend server.',
+      };
+
+      const locales = {
+        'en-US': baseCopy,
+        'zh-Hans': {
+          ...baseCopy,
+          'nav.features': '功能', 'nav.watch': '手表', 'nav.privacy': '隐私', 'nav.download': '下载',
+          'hero.eyebrow': '本地优先，为 Apple 设备而生',
+          'hero.lede': 'BeanLedger 是面向日常 Transaction、资产、多币种账户、图表、小组件与 Apple Watch 的复式记账 app。无需账号，无广告，无后端服务器。',
+          'cta.appStore': '在 App Store 下载', 'cta.guide': '用户指南', 'cta.support': '支持',
+          'proof.local': '数据保留在设备上', 'proof.icloud': 'iCloud 同步', 'proof.apple': 'iPhone、iPad、Apple Watch',
+          'features.kicker': '日常账本，资产全景', 'features.title': '不用搭建财务后台，也能把账记清楚。',
+          'features.lede': 'BeanLedger 保持快速记录，同时保留账户、分类、退款、循环计划、投资摘要与长期资产回顾所需的结构。',
+          'features.fast.title': '快速复式记录', 'features.fast.body': '用计算器式金额输入和可复用账户结构记录收入、支出、转账与投资 Transactions。',
+          'features.currency.title': '多币种账户', 'features.currency.body': '跟踪现金、卡片、储蓄与投资账户的原币余额、汇率和本位币汇总。',
+          'features.charts.title': '解释资金变化的图表', 'features.charts.body': '查看资产桑基流、净资产 K 线、收支对比、分类拆分和地图回顾。',
+          'features.plans.title': '计划、To-Do 与提醒', 'features.plans.body': '提前准备循环 Transactions 和循环 To-Do 计划，让可选通知帮你看住未来事项。',
+          'watch.kicker': '手表与小组件', 'watch.title': '不用打开 app，也能快速记录和查看。',
+          'watch.lede': 'Apple Watch 录入、复杂功能、主屏幕小组件、锁屏小组件、控制中心快速记录和 Siri 捷径，让小额财务动作留在发生的位置。',
+          'privacy.kicker': '信任与隐私', 'privacy.title': '你的钱和记录之间，没有专有服务器。',
+          'privacy.lede': 'BeanLedger 将数据本地存储在你的设备上，并通过你自己的 iCloud 账号同步。没有 BeanLedger 账号系统，没有广告画像，本页面也没有第三方分析脚本。',
+          'privacy.local.title': '默认本地优先', 'privacy.local.body': '你的记录从设备开始，iCloud 只用于在你的 Apple 设备之间同步。',
+          'privacy.backup.title': '可恢复的备份', 'privacy.backup.body': '自动备份与恢复支持，让长期财务历史更容易找回。',
+          'privacy.signin.title': '无需登录压力', 'privacy.signin.body': '打开 app 就能开始。BeanLedger 不要求单独的网页账号。',
+          'privacy.pro.title': 'Pro 保持实用', 'privacy.pro.body': 'BeanLedger Pro 解锁高级功能，但不会把产品变成强销售漏斗。',
+          'gallery.kicker': '截图', 'gallery.title': '一份能跟上日常速度的账本。',
+          'gallery.lede': '你在 App Store 截图、设备和日常快捷入口中看到的是同一套原生体验。',
+          'footer.tagline': '面向 iPhone、iPad、Apple Watch、小组件与 iCloud 的隐私优先个人财务 app。',
+          'footer.guide': '用户指南', 'footer.support': '支持', 'footer.privacy': '隐私政策', 'footer.agreement': '用户协议',
+          metaTitle: 'BeanLedger —— 隐私优先的 iPhone、iPad 与 Apple Watch 个人财务 app',
+          metaDescription: 'BeanLedger 是本地优先的复式记账 app，支持 iPhone、iPad、Apple Watch 与小组件。无需账号，无广告，无后端服务器。',
+        },
+        'zh-Hant': {
+          ...baseCopy,
+          'nav.features': '功能', 'nav.watch': '手錶', 'nav.privacy': '隱私', 'nav.download': '下載',
+          'hero.eyebrow': '本地優先，為 Apple 裝置而生',
+          'hero.lede': 'BeanLedger 是面向日常 Transaction、資產、多幣種帳戶、圖表、小組件與 Apple Watch 的複式記帳 app。無需帳號，無廣告，無後端伺服器。',
+          'cta.appStore': '在 App Store 下載', 'cta.guide': '使用者指南', 'cta.support': '支援',
+          'proof.local': '資料保留在裝置上', 'proof.icloud': 'iCloud 同步', 'proof.apple': 'iPhone、iPad、Apple Watch',
+          'features.kicker': '日常帳本，資產全景', 'features.title': '不用建財務後台，也能把帳記清楚。',
+          'features.lede': 'BeanLedger 保持快速記錄，同時保留帳戶、分類、退款、循環計畫、投資摘要與長期資產回顧所需的結構。',
+          'features.fast.title': '快速複式記錄', 'features.fast.body': '用計算機式金額輸入與可重用帳戶結構記錄收入、支出、轉帳與投資 Transactions。',
+          'features.currency.title': '多幣種帳戶', 'features.currency.body': '追蹤現金、卡片、儲蓄與投資帳戶的原幣餘額、匯率和本位幣匯總。',
+          'features.charts.title': '解釋資金變化的圖表', 'features.charts.body': '查看資產桑基流、淨資產 K 線、收支對比、分類拆分和地圖回顧。',
+          'features.plans.title': '計畫、To-Do 與提醒', 'features.plans.body': '提前準備循環 Transactions 和循環 To-Do 計畫，讓可選通知幫你看住未來事項。',
+          'watch.kicker': '手錶與小組件', 'watch.title': '不用打開 app，也能快速記錄和查看。',
+          'watch.lede': 'Apple Watch 錄入、複雜功能、主畫面小組件、鎖定畫面小組件、控制中心快速記錄和 Siri 捷徑，讓小額財務動作留在發生的位置。',
+          'privacy.kicker': '信任與隱私', 'privacy.title': '你的錢和記錄之間，沒有專有伺服器。',
+          'privacy.lede': 'BeanLedger 將資料本地儲存在你的裝置上，並透過你自己的 iCloud 帳號同步。沒有 BeanLedger 帳號系統，沒有廣告画像，本頁面也沒有第三方分析腳本。',
+          'privacy.local.title': '預設本地優先', 'privacy.local.body': '你的記錄從裝置開始，iCloud 只用於在你的 Apple 裝置之間同步。',
+          'privacy.backup.title': '可恢復的備份', 'privacy.backup.body': '自動備份與恢復支援，讓長期財務歷史更容易找回。',
+          'privacy.signin.title': '無需登入壓力', 'privacy.signin.body': '打開 app 就能開始。BeanLedger 不要求單獨的網頁帳號。',
+          'privacy.pro.title': 'Pro 保持實用', 'privacy.pro.body': 'BeanLedger Pro 解鎖進階功能，但不會把產品變成強銷售漏斗。',
+          'gallery.kicker': '截圖', 'gallery.title': '一份能跟上日常速度的帳本。',
+          'gallery.lede': '你在 App Store 截圖、裝置和日常快捷入口中看到的是同一套原生體驗。',
+          'footer.tagline': '面向 iPhone、iPad、Apple Watch、小組件與 iCloud 的隱私優先個人財務 app。',
+          'footer.guide': '使用者指南', 'footer.support': '支援', 'footer.privacy': '隱私政策', 'footer.agreement': '使用者協議',
+          metaTitle: 'BeanLedger —— 隱私優先的 iPhone、iPad 與 Apple Watch 個人財務 app',
+          metaDescription: 'BeanLedger 是本地優先的複式記帳 app，支援 iPhone、iPad、Apple Watch 與小組件。無需帳號，無廣告，無後端伺服器。',
+        },
+      };
+
+      const localeOverrides = {
+        'de-DE': { 'hero.eyebrow': 'Lokale Finanzen, gemacht für Apple Geräte', 'nav.download': 'Laden', 'cta.appStore': 'Im App Store laden', 'cta.guide': 'Benutzerhandbuch', 'cta.support': 'Support', 'features.title': 'Klare Aufzeichnungen ohne Finanzbüro.', 'watch.title': 'Erfassen und prüfen, ohne die App zu öffnen.', 'privacy.title': 'Kein proprietärer Server zwischen dir und deinem Geld.', 'footer.guide': 'Benutzerhandbuch', 'footer.support': 'Support', 'footer.privacy': 'Datenschutz', 'footer.agreement': 'Nutzungsbedingungen' },
+        'es-ES': { 'hero.eyebrow': 'Finanzas locales, hechas para dispositivos Apple', 'nav.download': 'Descargar', 'cta.appStore': 'Descargar en App Store', 'cta.guide': 'Guía de usuario', 'cta.support': 'Soporte', 'features.title': 'Registros claros sin oficina financiera.', 'watch.title': 'Registra y consulta sin abrir la app.', 'privacy.title': 'Sin servidor propietario entre tú y tu dinero.', 'footer.guide': 'Guía de usuario', 'footer.support': 'Soporte', 'footer.privacy': 'Privacidad', 'footer.agreement': 'Acuerdo de usuario' },
+        'fr-FR': { 'hero.eyebrow': 'Finance locale, conçue pour les appareils Apple', 'nav.download': 'Télécharger', 'cta.appStore': 'Télécharger sur l’App Store', 'cta.guide': 'Guide utilisateur', 'cta.support': 'Assistance', 'features.title': 'Des comptes clairs sans back-office financier.', 'watch.title': 'Saisir et consulter sans ouvrir l’app.', 'privacy.title': 'Aucun serveur propriétaire entre vous et votre argent.', 'footer.guide': 'Guide utilisateur', 'footer.support': 'Assistance', 'footer.privacy': 'Confidentialité', 'footer.agreement': 'Conditions utilisateur' },
+        'it': { 'hero.eyebrow': 'Finanza locale, pensata per dispositivi Apple', 'nav.download': 'Scarica', 'cta.appStore': 'Scarica su App Store', 'cta.guide': 'Guida utente', 'cta.support': 'Supporto', 'features.title': 'Registri chiari senza ufficio contabile.', 'watch.title': 'Registra e controlla senza aprire l’app.', 'privacy.title': 'Nessun server proprietario tra te e il tuo denaro.', 'footer.guide': 'Guida utente', 'footer.support': 'Supporto', 'footer.privacy': 'Privacy', 'footer.agreement': 'Accordo utente' },
+        'ja': { 'hero.eyebrow': 'Apple デバイスのためのローカル優先ファイナンス', 'nav.download': 'ダウンロード', 'cta.appStore': 'App Store でダウンロード', 'cta.guide': 'ユーザーガイド', 'cta.support': 'サポート', 'features.title': '財務バックオフィスなしで明快に記録。', 'watch.title': 'アプリを開かずに記録と確認。', 'privacy.title': 'あなたのお金との間に専用サーバーはありません。', 'footer.guide': 'ユーザーガイド', 'footer.support': 'サポート', 'footer.privacy': 'プライバシーポリシー', 'footer.agreement': 'ユーザー規約' },
+        'ko': { 'hero.eyebrow': 'Apple 기기를 위한 로컬 우선 금융', 'nav.download': '다운로드', 'cta.appStore': 'App Store에서 다운로드', 'cta.guide': '사용자 가이드', 'cta.support': '지원', 'features.title': '복잡한 백오피스 없이 또렷한 기록.', 'watch.title': '앱을 열지 않고 기록하고 확인하세요.', 'privacy.title': '당신의 돈과 기록 사이에 전용 서버가 없습니다.', 'footer.guide': '사용자 가이드', 'footer.support': '지원', 'footer.privacy': '개인정보 처리방침', 'footer.agreement': '사용자 계약' },
+        'ms': { 'hero.eyebrow': 'Kewangan setempat untuk peranti Apple', 'nav.download': 'Muat turun', 'cta.appStore': 'Muat turun di App Store', 'cta.guide': 'Panduan pengguna', 'cta.support': 'Sokongan', 'features.title': 'Rekod jelas tanpa pejabat kewangan.', 'watch.title': 'Catat dan semak tanpa membuka app.', 'privacy.title': 'Tiada pelayan proprietari antara anda dan wang anda.', 'footer.guide': 'Panduan pengguna', 'footer.support': 'Sokongan', 'footer.privacy': 'Privasi', 'footer.agreement': 'Perjanjian pengguna' },
+        'nl-NL': { 'hero.eyebrow': 'Lokale financiën, gemaakt voor Apple apparaten', 'nav.download': 'Download', 'cta.appStore': 'Download in de App Store', 'cta.guide': 'Gebruikersgids', 'cta.support': 'Support', 'features.title': 'Heldere administratie zonder financiële backoffice.', 'watch.title': 'Vastleggen en kijken zonder de app te openen.', 'privacy.title': 'Geen eigen server tussen jou en je geld.', 'footer.guide': 'Gebruikersgids', 'footer.support': 'Support', 'footer.privacy': 'Privacybeleid', 'footer.agreement': 'Gebruikersovereenkomst' },
+        'pl': { 'hero.eyebrow': 'Finanse lokalne dla urządzeń Apple', 'nav.download': 'Pobierz', 'cta.appStore': 'Pobierz z App Store', 'cta.guide': 'Przewodnik użytkownika', 'cta.support': 'Pomoc', 'features.title': 'Czytelne zapisy bez finansowego zaplecza.', 'watch.title': 'Zapisuj i sprawdzaj bez otwierania aplikacji.', 'privacy.title': 'Brak własnego serwera między Tobą a Twoimi pieniędzmi.', 'footer.guide': 'Przewodnik', 'footer.support': 'Pomoc', 'footer.privacy': 'Prywatność', 'footer.agreement': 'Umowa użytkownika' },
+        'pt-BR': { 'hero.eyebrow': 'Finanças locais, feitas para dispositivos Apple', 'nav.download': 'Baixar', 'cta.appStore': 'Baixar na App Store', 'cta.guide': 'Guia do usuário', 'cta.support': 'Suporte', 'features.title': 'Registros claros sem back office financeiro.', 'watch.title': 'Registre e consulte sem abrir o app.', 'privacy.title': 'Nenhum servidor proprietário entre você e seu dinheiro.', 'footer.guide': 'Guia do usuário', 'footer.support': 'Suporte', 'footer.privacy': 'Privacidade', 'footer.agreement': 'Contrato do usuário' },
+        'ru': { 'hero.eyebrow': 'Локальные финансы для устройств Apple', 'nav.download': 'Скачать', 'cta.appStore': 'Скачать в App Store', 'cta.guide': 'Руководство', 'cta.support': 'Поддержка', 'features.title': 'Понятные записи без финансового бэк-офиса.', 'watch.title': 'Записывайте и проверяйте, не открывая приложение.', 'privacy.title': 'Между вами и вашими деньгами нет собственного сервера.', 'footer.guide': 'Руководство', 'footer.support': 'Поддержка', 'footer.privacy': 'Конфиденциальность', 'footer.agreement': 'Пользовательское соглашение' },
+        'th': { 'hero.eyebrow': 'การเงินแบบเก็บในเครื่อง สำหรับอุปกรณ์ Apple', 'nav.download': 'ดาวน์โหลด', 'cta.appStore': 'ดาวน์โหลดบน App Store', 'cta.guide': 'คู่มือผู้ใช้', 'cta.support': 'ช่วยเหลือ', 'features.title': 'บันทึกชัดเจนโดยไม่ต้องมีระบบหลังบ้านการเงิน.', 'watch.title': 'บันทึกและดูข้อมูลโดยไม่ต้องเปิดแอป.', 'privacy.title': 'ไม่มีเซิร์ฟเวอร์เฉพาะคั่นกลางระหว่างคุณกับเงินของคุณ.', 'footer.guide': 'คู่มือผู้ใช้', 'footer.support': 'ช่วยเหลือ', 'footer.privacy': 'ความเป็นส่วนตัว', 'footer.agreement': 'ข้อตกลงผู้ใช้' },
+        'tr': { 'hero.eyebrow': 'Apple aygıtları için yerel öncelikli finans', 'nav.download': 'İndir', 'cta.appStore': 'App Store’dan indir', 'cta.guide': 'Kullanım kılavuzu', 'cta.support': 'Destek', 'features.title': 'Finans ofisi olmadan net kayıtlar.', 'watch.title': 'Uygulamayı açmadan kaydet ve göz at.', 'privacy.title': 'Paranla aranda özel bir sunucu yok.', 'footer.guide': 'Kullanım kılavuzu', 'footer.support': 'Destek', 'footer.privacy': 'Gizlilik', 'footer.agreement': 'Kullanıcı sözleşmesi' },
+        'vi': { 'hero.eyebrow': 'Tài chính ưu tiên cục bộ cho thiết bị Apple', 'nav.download': 'Tải về', 'cta.appStore': 'Tải trên App Store', 'cta.guide': 'Hướng dẫn', 'cta.support': 'Hỗ trợ', 'features.title': 'Ghi chép rõ ràng không cần hệ thống hậu trường.', 'watch.title': 'Ghi và xem nhanh mà không mở ứng dụng.', 'privacy.title': 'Không có máy chủ riêng chen giữa bạn và tiền của bạn.', 'footer.guide': 'Hướng dẫn', 'footer.support': 'Hỗ trợ', 'footer.privacy': 'Quyền riêng tư', 'footer.agreement': 'Thỏa thuận người dùng' },
+      };
+
+      for (const [locale, override] of Object.entries(localeOverrides)) {
+        locales[locale] = { ...baseCopy, ...override };
+      }
+
+      const supportedLocales = Object.keys(locales);
+
+      function normalizeLocale(locale) {
+        if (!locale) return 'en-US';
+        const cleaned = locale.replace('_', '-');
+        if (supportedLocales.includes(cleaned)) return cleaned;
+        const lower = cleaned.toLowerCase();
+        if (lower.startsWith('zh-hant') || lower === 'zh-tw' || lower === 'zh-hk' || lower === 'zh-mo') return 'zh-Hant';
+        if (lower.startsWith('zh')) return 'zh-Hans';
+        const language = lower.split('-')[0];
+        return supportedLocales.find((candidate) => candidate.toLowerCase().split('-')[0] === language) || 'en-US';
+      }
+
+      function detectLocale() {
+        const urlLocale = new URLSearchParams(window.location.search).get('lang');
+        const storedLocale = window.localStorage.getItem('beanledger.locale');
+        const browserLocales = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+        return normalizeLocale(urlLocale || storedLocale || browserLocales[0]);
+      }
+
+      function applyLocale(locale) {
+        const normalized = normalizeLocale(locale);
+        const copy = locales[normalized];
+        document.documentElement.lang = normalized;
+        document.title = copy.metaTitle || baseCopy.metaTitle;
+        document.querySelector('meta[name="description"]').setAttribute('content', copy.metaDescription || baseCopy.metaDescription);
+        document.querySelector('meta[property="og:description"]').setAttribute('content', copy.metaDescription || baseCopy.metaDescription);
+        document.querySelectorAll('[data-i18n]').forEach((node) => {
+          const value = copy[node.dataset.i18n] || baseCopy[node.dataset.i18n];
+          if (value) node.textContent = value;
+        });
+        document.getElementById('language-select').value = normalized;
+        window.localStorage.setItem('beanledger.locale', normalized);
+      }
+
+      document.getElementById('language-select').addEventListener('change', (event) => {
+        applyLocale(event.target.value);
+      });
+
+      applyLocale(detectLocale());
+    </script>
   </body>
 </html>

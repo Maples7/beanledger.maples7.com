@@ -23,10 +23,36 @@ REQUIRED_ASSETS = [
 
 REQUIRED_LINKS = {
     "https://apps.apple.com/app/id6739036460",
+    "https://my.feishu.cn/wiki/ZThAw9DpIiP1c5kpA5ecevW7n0g",
+    "https://my.feishu.cn/wiki/LMQ7wdGL5iYMySkqAjFcPa7xnjf",
+    "https://my.feishu.cn/wiki/CAsdwDoQCi7GNXk94locljnnnwd",
+}
+
+FORBIDDEN_LINKS = {
     "https://my.feishu.cn/wiki/OmKCwVtreii2j3kZFrCc0lzcnbb",
     "https://my.feishu.cn/wiki/BYUQwg2KRidwW7ka2dJcWms6n2e",
     "https://my.feishu.cn/wiki/RCTPwbGY6iIpdmkP4AUcWpFYn0b",
     "https://my.feishu.cn/wiki/INLGw3WtQiNyO1kOPWXcG2WEnQc",
+}
+
+SUPPORTED_LOCALES = {
+    "en-US",
+    "zh-Hans",
+    "zh-Hant",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "it",
+    "ja",
+    "ko",
+    "ms",
+    "nl-NL",
+    "pl",
+    "pt-BR",
+    "ru",
+    "th",
+    "tr",
+    "vi",
 }
 
 FORBIDDEN_MARKERS = [
@@ -89,6 +115,12 @@ def main() -> None:
     missing_links = sorted(REQUIRED_LINKS - parser.links)
     if missing_links:
         fail("required links are missing: " + ", ".join(missing_links))
+    leaked_links = sorted(FORBIDDEN_LINKS & parser.links)
+    if leaked_links:
+        fail("obsolete documentation links are still present: " + ", ".join(leaked_links))
+    missing_locales = sorted(locale for locale in SUPPORTED_LOCALES if f"'{locale}'" not in html and f'"{locale}"' not in html)
+    if missing_locales:
+        fail("supported locales are missing: " + ", ".join(missing_locales))
     for marker in FORBIDDEN_MARKERS:
         if marker in html:
             fail(f"page leaks internal-only marker: {marker}")
