@@ -303,7 +303,7 @@
       }
 
       .feature strong { display: block; margin-top: 2.1rem; font-size: 1.08rem; }
-      .feature p { margin: 0.55rem 0 0; color: var(--ink-soft); font-size: 0.96rem; }
+      .feature p { margin: 0.55rem 0 0; color: var(--ink-soft); font-size: 0.96rem; white-space: pre-line; }
 
       .dot {
         width: 1.85rem;
@@ -437,9 +437,9 @@
       <main id="top">
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-copy">
-            <p class="eyebrow" data-i18n="hero.eyebrow">Local-first finance, built for Apple devices</p>
+            <p class="eyebrow" data-i18n="hero.eyebrow">Personal finance, refined for Apple devices</p>
             <h1 id="hero-title">BeanLedger</h1>
-            <p data-i18n="hero.lede">Double-entry personal finance for daily Transactions, assets, multi-currency accounts, charts, widgets, and Apple Watch. No account, no ads, no backend server.</p>
+            <p data-i18n="hero.lede">Keep your daily money, assets, charts, multi-currency accounts, widgets, and Apple Watch entries in one local-first ledger. No sign-in. No ads. No backend.</p>
             <div class="actions" aria-label="Primary actions">
               <a class="button primary" href="https://apps.apple.com/app/id6739036460" data-i18n="cta.appStore">Download on the App Store</a>
               <a class="button" href="https://my.feishu.cn/wiki/ZThAw9DpIiP1c5kpA5ecevW7n0g" data-i18n="cta.guide">User Guide</a>
@@ -463,13 +463,13 @@
         <section class="section" id="features" aria-labelledby="features-title">
           <div class="section-inner">
             <p class="section-kicker" data-i18n="features.kicker">Everyday ledger, full asset picture</p>
-            <h2 id="features-title" data-i18n="features.title">Clear records without a finance back office.</h2>
-            <p class="section-lede" data-i18n="features.lede">BeanLedger keeps capture fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.</p>
+            <h2 id="features-title" data-i18n="features.title">Your books stay clear without becoming work.</h2>
+            <p class="section-lede" data-i18n="features.lede">BeanLedger keeps entry fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.</p>
             <div class="feature-grid">
-              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.fast.title">Fast double-entry capture</strong><p data-i18n="features.fast.body">Record income, expense, transfer, and investment Transactions with a calculator-style amount input and reusable account structure.</p></article>
+              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.fast.title">Fast double-entry capture</strong><p data-i18n="features.fast.body">Record income, expense, transfer, and investment transactions with a calculator-style amount input and reusable account structure.</p></article>
               <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.currency.title">Multi-currency accounts</strong><p data-i18n="features.currency.body">Track native balances, exchange rates, and local-currency summaries across cash, cards, savings, and investment accounts.</p></article>
               <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.charts.title">Charts that explain movement</strong><p data-i18n="features.charts.body">Review asset Sankey flows, net worth K-line trends, income and expense comparisons, category breakdowns, and map memories.</p></article>
-              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.plans.title">Plans, To-Do, and reminders</strong><p data-i18n="features.plans.body">Prepare recurring Transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.</p></article>
+              <article class="feature"><div class="dot" aria-hidden="true"></div><strong data-i18n="features.plans.title">Plans, To-Do, and reminders</strong><p data-i18n="features.plans.body">Prepare recurring transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.</p></article>
             </div>
           </div>
         </section>
@@ -491,13 +491,12 @@
         <section class="section privacy-band" id="privacy" aria-labelledby="privacy-title">
           <div class="section-inner">
             <p class="section-kicker" data-i18n="privacy.kicker">Trust and privacy</p>
-            <h2 id="privacy-title" data-i18n="privacy.title">No proprietary server between you and your money.</h2>
-            <p class="section-lede" data-i18n="privacy.lede">BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no advertising profile, and no third-party analytics script on this page.</p>
+            <h2 id="privacy-title" data-i18n="privacy.title">No BeanLedger server between you and your money.</h2>
+            <p class="section-lede" data-i18n="privacy.lede">BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no ad profile, and no third-party analytics script on this page.</p>
             <div class="feature-grid">
               <article class="feature"><strong data-i18n="privacy.local.title">Local-first by default</strong><p data-i18n="privacy.local.body">Your records begin on your device, with iCloud used only for syncing across your Apple devices.</p></article>
               <article class="feature"><strong data-i18n="privacy.backup.title">Portable backups</strong><p data-i18n="privacy.backup.body">Automatic backups and restore support help keep long-term financial history recoverable.</p></article>
               <article class="feature"><strong data-i18n="privacy.signin.title">No sign-in pressure</strong><p data-i18n="privacy.signin.body">Open the app and start. BeanLedger does not require a separate web account.</p></article>
-              <article class="feature"><strong data-i18n="privacy.pro.title">Pro stays practical</strong><p data-i18n="privacy.pro.body">BeanLedger Pro unlocks advanced features without turning the product into a hard-sell funnel.</p></article>
             </div>
           </div>
         </section>
@@ -509,7 +508,7 @@
             <p class="section-lede" data-i18n="gallery.lede">The same native app experience appears in App Store screenshots, on the device, and in the quick surfaces you use throughout the day.</p>
             <div class="gallery" aria-label="BeanLedger screenshot gallery">
               <figure class="gallery-card"><img src="assets/screenshots/iphone-home.png" alt="BeanLedger home dashboard" width="396" height="860"></figure>
-              <figure class="gallery-card"><img src="assets/screenshots/iphone-capture.png" alt="BeanLedger Transaction capture" width="396" height="860"></figure>
+              <figure class="gallery-card"><img src="assets/screenshots/iphone-capture.png" alt="BeanLedger transaction capture" width="396" height="860"></figure>
               <figure class="gallery-card"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widgets" width="396" height="860"></figure>
               <figure class="gallery-card watch"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch" width="424" height="520"></figure>
             </div>
@@ -528,24 +527,24 @@
         </div>
       </footer>
     </div>
-
+    <script src="assets/locales.js"></script>
     <script>
       const baseCopy = {
         'nav.features': 'Features', 'nav.watch': 'Watch', 'nav.privacy': 'Privacy', 'nav.download': 'Download',
-        'hero.eyebrow': 'Local-first finance, built for Apple devices',
-        'hero.lede': 'Double-entry personal finance for daily Transactions, assets, multi-currency accounts, charts, widgets, and Apple Watch. No account, no ads, no backend server.',
+        'hero.eyebrow': 'Personal finance, refined for Apple devices',
+        'hero.lede': 'Keep your daily money, assets, charts, multi-currency accounts, widgets, and Apple Watch entries in one local-first ledger. No sign-in. No ads. No backend.',
         'cta.appStore': 'Download on the App Store', 'cta.guide': 'User Guide', 'cta.support': 'Support',
         'proof.local': 'On-device data', 'proof.icloud': 'iCloud sync', 'proof.apple': 'iPhone, iPad, Apple Watch',
-        'features.kicker': 'Everyday ledger, full asset picture', 'features.title': 'Clear records without a finance back office.',
-        'features.lede': 'BeanLedger keeps capture fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.',
-        'features.fast.title': 'Fast double-entry capture', 'features.fast.body': 'Record income, expense, transfer, and investment Transactions with a calculator-style amount input and reusable account structure.',
+        'features.kicker': 'Everyday ledger, full asset picture', 'features.title': 'Your books stay clear without becoming work.',
+        'features.lede': 'BeanLedger keeps entry fast while preserving the structure needed for accounts, categories, refunds, recurring plans, investment summaries, and long-term asset review.',
+        'features.fast.title': 'Fast double-entry capture', 'features.fast.body': 'Record income, expense, transfer, and investment transactions with a calculator-style amount input and reusable account structure.',
         'features.currency.title': 'Multi-currency accounts', 'features.currency.body': 'Track native balances, exchange rates, and local-currency summaries across cash, cards, savings, and investment accounts.',
         'features.charts.title': 'Charts that explain movement', 'features.charts.body': 'Review asset Sankey flows, net worth K-line trends, income and expense comparisons, category breakdowns, and map memories.',
-        'features.plans.title': 'Plans, To-Do, and reminders', 'features.plans.body': 'Prepare recurring Transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.',
+        'features.plans.title': 'Plans, To-Do, and reminders', 'features.plans.body': 'Prepare recurring transactions and recurring To-Do plans, then let optional notifications keep upcoming work visible.',
         'watch.kicker': 'Watch and widgets', 'watch.title': 'Capture and glance without opening the app.',
         'watch.lede': 'Apple Watch entry, complications, Home Screen widgets, Lock Screen widgets, Control Center quick capture, and Siri shortcuts keep small financial moments close to where they happen.',
-        'privacy.kicker': 'Trust and privacy', 'privacy.title': 'No proprietary server between you and your money.',
-        'privacy.lede': 'BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no advertising profile, and no third-party analytics script on this page.',
+        'privacy.kicker': 'Trust and privacy', 'privacy.title': 'No BeanLedger server between you and your money.',
+        'privacy.lede': 'BeanLedger stores data locally on your devices and syncs through your own iCloud account. There is no BeanLedger account system, no ad profile, and no third-party analytics script on this page.',
         'privacy.local.title': 'Local-first by default', 'privacy.local.body': 'Your records begin on your device, with iCloud used only for syncing across your Apple devices.',
         'privacy.backup.title': 'Portable backups', 'privacy.backup.body': 'Automatic backups and restore support help keep long-term financial history recoverable.',
         'privacy.signin.title': 'No sign-in pressure', 'privacy.signin.body': 'Open the app and start. BeanLedger does not require a separate web account.',
@@ -555,7 +554,7 @@
         'footer.tagline': 'Privacy-first personal finance for iPhone, iPad, Apple Watch, widgets, and iCloud.',
         'footer.appStore': 'App Store', 'footer.guide': 'User Guide', 'footer.support': 'Support', 'footer.privacy': 'Privacy Policy', 'footer.agreement': 'User Agreement',
         metaTitle: 'BeanLedger - Privacy-first personal finance for iPhone, iPad, and Apple Watch',
-        metaDescription: 'BeanLedger is a local-first double-entry personal finance app for iPhone, iPad, Apple Watch, and widgets. No account, no ads, no backend server.',
+        metaDescription: 'BeanLedger is a local-first double-entry personal finance app for iPhone, iPad, Apple Watch, and widgets. No sign-in, no ads, no backend server.',
       };
 
       const locales = {
@@ -564,19 +563,19 @@
           ...baseCopy,
           'nav.features': '功能', 'nav.watch': '手表', 'nav.privacy': '隐私', 'nav.download': '下载',
           'hero.eyebrow': '本地优先，为 Apple 设备而生',
-          'hero.lede': 'BeanLedger 是面向日常 Transaction、资产、多币种账户、图表、小组件与 Apple Watch 的复式记账 app。无需账号，无广告，无后端服务器。',
+          'hero.lede': 'BeanLedger 用精简的复式记账法，帮你记录日常收支、资产、多币种账户、图表、小组件与 Apple Watch。无需注册，无广告，无后端服务器。',
           'cta.appStore': '在 App Store 下载', 'cta.guide': '用户指南', 'cta.support': '支持',
           'proof.local': '数据保留在设备上', 'proof.icloud': 'iCloud 同步', 'proof.apple': 'iPhone、iPad、Apple Watch',
           'features.kicker': '日常账本，资产全景', 'features.title': '不用搭建财务后台，也能把账记清楚。',
           'features.lede': 'BeanLedger 保持快速记录，同时保留账户、分类、退款、循环计划、投资摘要与长期资产回顾所需的结构。',
-          'features.fast.title': '快速复式记录', 'features.fast.body': '用计算器式金额输入和可复用账户结构记录收入、支出、转账与投资 Transactions。',
+          'features.fast.title': '快速复式记账', 'features.fast.body': '用计算器式金额输入和可复用账户结构记录收入、支出、转账与投资交易。',
           'features.currency.title': '多币种账户', 'features.currency.body': '跟踪现金、卡片、储蓄与投资账户的原币余额、汇率和本位币汇总。',
           'features.charts.title': '解释资金变化的图表', 'features.charts.body': '查看资产桑基流、净资产 K 线、收支对比、分类拆分和地图回顾。',
-          'features.plans.title': '计划、To-Do 与提醒', 'features.plans.body': '提前准备循环 Transactions 和循环 To-Do 计划，让可选通知帮你看住未来事项。',
+          'features.plans.title': '计划、待办与提醒', 'features.plans.body': '提前准备循环交易计划和循环待办计划，让可选通知帮你看住未来事项。',
           'watch.kicker': '手表与小组件', 'watch.title': '不用打开 app，也能快速记录和查看。',
-          'watch.lede': 'Apple Watch 录入、复杂功能、主屏幕小组件、锁屏小组件、控制中心快速记录和 Siri 捷径，让小额财务动作留在发生的位置。',
-          'privacy.kicker': '信任与隐私', 'privacy.title': '你的钱和记录之间，没有专有服务器。',
-          'privacy.lede': 'BeanLedger 将数据本地存储在你的设备上，并通过你自己的 iCloud 账号同步。没有 BeanLedger 账号系统，没有广告画像，本页面也没有第三方分析脚本。',
+          'watch.lede': 'Apple Watch 录入、复杂功能、主屏幕小组件、锁屏小组件、控制中心快速记录和 Siri 捷径，让零散的记账动作留在发生的位置。',
+          'privacy.kicker': '信任与隐私', 'privacy.title': '你的钱和记录之间，没有 BeanLedger 自建服务器。',
+          'privacy.lede': 'BeanLedger 将数据本地存储在你的设备上，并通过你自己的 iCloud 账号同步。没有 BeanLedger 账号系统，没有广告追踪，本页面也没有第三方分析脚本。',
           'privacy.local.title': '默认本地优先', 'privacy.local.body': '你的记录从设备开始，iCloud 只用于在你的 Apple 设备之间同步。',
           'privacy.backup.title': '可恢复的备份', 'privacy.backup.body': '自动备份与恢复支持，让长期财务历史更容易找回。',
           'privacy.signin.title': '无需登录压力', 'privacy.signin.body': '打开 app 就能开始。BeanLedger 不要求单独的网页账号。',
@@ -592,19 +591,19 @@
           ...baseCopy,
           'nav.features': '功能', 'nav.watch': '手錶', 'nav.privacy': '隱私', 'nav.download': '下載',
           'hero.eyebrow': '本地優先，為 Apple 裝置而生',
-          'hero.lede': 'BeanLedger 是面向日常 Transaction、資產、多幣種帳戶、圖表、小組件與 Apple Watch 的複式記帳 app。無需帳號，無廣告，無後端伺服器。',
+          'hero.lede': 'BeanLedger 以精簡的複式記帳法，協助你記錄日常收支、資產、多幣種帳戶、圖表、小組件與 Apple Watch。無需註冊，無廣告，無後端伺服器。',
           'cta.appStore': '在 App Store 下載', 'cta.guide': '使用者指南', 'cta.support': '支援',
           'proof.local': '資料保留在裝置上', 'proof.icloud': 'iCloud 同步', 'proof.apple': 'iPhone、iPad、Apple Watch',
           'features.kicker': '日常帳本，資產全景', 'features.title': '不用建財務後台，也能把帳記清楚。',
           'features.lede': 'BeanLedger 保持快速記錄，同時保留帳戶、分類、退款、循環計畫、投資摘要與長期資產回顧所需的結構。',
-          'features.fast.title': '快速複式記錄', 'features.fast.body': '用計算機式金額輸入與可重用帳戶結構記錄收入、支出、轉帳與投資 Transactions。',
+          'features.fast.title': '快速複式記帳', 'features.fast.body': '用計算機式金額輸入與可重用帳戶結構記錄收入、支出、轉帳與投資交易。',
           'features.currency.title': '多幣種帳戶', 'features.currency.body': '追蹤現金、卡片、儲蓄與投資帳戶的原幣餘額、匯率和本位幣匯總。',
           'features.charts.title': '解釋資金變化的圖表', 'features.charts.body': '查看資產桑基流、淨資產 K 線、收支對比、分類拆分和地圖回顧。',
-          'features.plans.title': '計畫、To-Do 與提醒', 'features.plans.body': '提前準備循環 Transactions 和循環 To-Do 計畫，讓可選通知幫你看住未來事項。',
+          'features.plans.title': '計劃、待辦與提醒', 'features.plans.body': '提前準備循環交易計劃和循環待辦計劃，讓可選通知幫你看住未來事項。',
           'watch.kicker': '手錶與小組件', 'watch.title': '不用打開 app，也能快速記錄和查看。',
-          'watch.lede': 'Apple Watch 錄入、複雜功能、主畫面小組件、鎖定畫面小組件、控制中心快速記錄和 Siri 捷徑，讓小額財務動作留在發生的位置。',
-          'privacy.kicker': '信任與隱私', 'privacy.title': '你的錢和記錄之間，沒有專有伺服器。',
-          'privacy.lede': 'BeanLedger 將資料本地儲存在你的裝置上，並透過你自己的 iCloud 帳號同步。沒有 BeanLedger 帳號系統，沒有廣告画像，本頁面也沒有第三方分析腳本。',
+          'watch.lede': 'Apple Watch 錄入、複雜功能、主畫面小組件、鎖定畫面小組件、控制中心快速記錄和 Siri 捷徑，讓零散的記帳動作留在發生的位置。',
+          'privacy.kicker': '信任與隱私', 'privacy.title': '你的錢和記錄之間，沒有 BeanLedger 自建伺服器。',
+          'privacy.lede': 'BeanLedger 將資料本地儲存在你的裝置上，並透過你自己的 iCloud 帳號同步。沒有 BeanLedger 帳號系統，沒有廣告追蹤，本頁面也沒有第三方分析腳本。',
           'privacy.local.title': '預設本地優先', 'privacy.local.body': '你的記錄從裝置開始，iCloud 只用於在你的 Apple 裝置之間同步。',
           'privacy.backup.title': '可恢復的備份', 'privacy.backup.body': '自動備份與恢復支援，讓長期財務歷史更容易找回。',
           'privacy.signin.title': '無需登入壓力', 'privacy.signin.body': '打開 app 就能開始。BeanLedger 不要求單獨的網頁帳號。',
@@ -637,6 +636,12 @@
 
       for (const [locale, override] of Object.entries(localeOverrides)) {
         locales[locale] = { ...baseCopy, ...override };
+      }
+
+      if (window.BEANLEDGER_LOCALES) {
+        for (const [locale, copy] of Object.entries(window.BEANLEDGER_LOCALES)) {
+          locales[locale] = { ...baseCopy, ...copy };
+        }
       }
 
       const supportedLocales = Object.keys(locales);

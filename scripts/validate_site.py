@@ -13,7 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX_PATH = ROOT / "index.html"
 CNAME_PATH = ROOT / "CNAME"
 
-REQUIRED_ASSETS = [
+REQUIRED_FILES = [
+    "assets/app-icon.png",
+    "assets/locales.js",
+]
+
+REQUIRED_IMAGES = [
     "assets/app-icon.png",
     "assets/screenshots/iphone-home.png",
     "assets/screenshots/iphone-capture.png",
@@ -107,9 +112,10 @@ def main() -> None:
 
     if "BeanLedger" not in parser.title:
         fail("HTML title must include BeanLedger")
-    for asset in REQUIRED_ASSETS:
+    for asset in REQUIRED_FILES + REQUIRED_IMAGES:
         if not (ROOT / asset).exists():
             fail(f"required asset is missing: {asset}")
+    for asset in REQUIRED_IMAGES:
         if asset not in parser.images:
             fail(f"index.html does not reference required asset: {asset}")
     missing_links = sorted(REQUIRED_LINKS - parser.links)
@@ -126,8 +132,17 @@ def main() -> None:
             fail(f"page leaks internal-only marker: {marker}")
     if re.search(r"\bTrades?\b", html):
         fail("user-facing page copy must say Transaction, not Trade")
+    if re.search(r"[\u4e00-\u9fff][^\n<>]{0,100}\bTransactions?\b|\bTransactions?\b[^\n<>]{0,100}[\u4e00-\u9fff]", html):
+        fail("Chinese page copy must use the localized term 交易, not Transaction")
     if re.search(r"fonts\.googleapis|googletagmanager|google-analytics|plausible\.io|umami\.is|<script[^>]+https?", html, re.I):
         fail("page must not load third-party fonts or analytics")
+
+    locales_js = (ROOT / "assets/locales.js").read_text(encoding="utf-8")
+    if "window.BEANLEDGER_LOCALES" not in locales_js:
+        fail("assets/locales.js must define window.BEANLEDGER_LOCALES")
+    for marker in FORBIDDEN_MARKERS:
+        if marker in locales_js:
+            fail(f"localized copy leaks internal-only marker: {marker}")
 
     print("site validation passed")
 
