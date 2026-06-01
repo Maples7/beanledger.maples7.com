@@ -26,6 +26,13 @@ REQUIRED_IMAGES = [
     "assets/screenshots/watch-home.png",
 ]
 
+LOCALIZED_IMAGE_FILES = [
+    "iphone-home.png",
+    "iphone-capture.png",
+    "iphone-widgets.png",
+    "watch-home.png",
+]
+
 REQUIRED_LINKS = {
     "https://apps.apple.com/app/id6739036460",
     "https://my.feishu.cn/wiki/ZThAw9DpIiP1c5kpA5ecevW7n0g",
@@ -118,6 +125,13 @@ def main() -> None:
     for asset in REQUIRED_IMAGES:
         if asset not in parser.images:
             fail(f"index.html does not reference required asset: {asset}")
+    for locale in SUPPORTED_LOCALES:
+        for image_name in LOCALIZED_IMAGE_FILES:
+            localized_asset = ROOT / "assets" / "screenshots" / locale / image_name
+            if not localized_asset.exists():
+                fail(f"localized screenshot is missing: {locale}/{image_name}")
+    if "applyLocaleImages" not in html:
+        fail("index.html must switch screenshots when the locale changes")
     missing_links = sorted(REQUIRED_LINKS - parser.links)
     if missing_links:
         fail("required links are missing: " + ", ".join(missing_links))

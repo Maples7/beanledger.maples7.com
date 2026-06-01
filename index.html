@@ -460,9 +460,9 @@
           </div>
           <div class="poster-stage" aria-hidden="true">
             <div class="poster-stack">
-              <div class="poster-card"><img src="assets/screenshots/iphone-home.png" alt="" width="396" height="860"></div>
-              <div class="poster-card"><img src="assets/screenshots/iphone-capture.png" alt="" width="396" height="860"></div>
-              <div class="poster-card"><img src="assets/screenshots/iphone-widgets.png" alt="" width="396" height="860"></div>
+              <div class="poster-card"><img data-shot="home" src="assets/screenshots/iphone-home.png" alt="" width="396" height="860"></div>
+              <div class="poster-card"><img data-shot="capture" src="assets/screenshots/iphone-capture.png" alt="" width="396" height="860"></div>
+              <div class="poster-card"><img data-shot="widgets" src="assets/screenshots/iphone-widgets.png" alt="" width="396" height="860"></div>
             </div>
           </div>
         </section>
@@ -489,8 +489,8 @@
               <p class="section-lede" data-i18n="watch.lede">Apple Watch entry, complications, Home Screen widgets, Lock Screen widgets, Control Center quick capture, and Siri shortcuts keep small financial moments close to where they happen.</p>
             </div>
             <div class="watch-stack" aria-label="BeanLedger Apple Watch and widget screenshots">
-              <div class="watch-card"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch summary screen" width="424" height="520"></div>
-              <div class="widget-card"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widget overview" width="396" height="860"></div>
+              <div class="watch-card"><img data-shot="watch" src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch summary screen" width="424" height="520"></div>
+              <div class="widget-card"><img data-shot="widgets" src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widget overview" width="396" height="860"></div>
             </div>
           </div>
         </section>
@@ -514,10 +514,10 @@
             <h2 id="screenshots-title" data-i18n="gallery.title">Spend less time sorting money. See more of what changed.</h2>
             <p class="section-lede" data-i18n="gallery.lede">BeanLedger keeps the loop small: record in seconds, review when it matters, and keep the long-term history under your control.</p>
             <div class="gallery" aria-label="BeanLedger screenshot gallery">
-              <figure class="gallery-card"><img src="assets/screenshots/iphone-home.png" alt="BeanLedger home dashboard" width="396" height="860"></figure>
-              <figure class="gallery-card"><img src="assets/screenshots/iphone-capture.png" alt="BeanLedger transaction capture" width="396" height="860"></figure>
-              <figure class="gallery-card"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widgets" width="396" height="860"></figure>
-              <figure class="gallery-card watch"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch" width="424" height="520"></figure>
+              <figure class="gallery-card"><img data-shot="home" src="assets/screenshots/iphone-home.png" alt="BeanLedger home dashboard" width="396" height="860"></figure>
+              <figure class="gallery-card"><img data-shot="capture" src="assets/screenshots/iphone-capture.png" alt="BeanLedger transaction capture" width="396" height="860"></figure>
+              <figure class="gallery-card"><img data-shot="widgets" src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widgets" width="396" height="860"></figure>
+              <figure class="gallery-card watch"><img data-shot="watch" src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch" width="424" height="520"></figure>
             </div>
             <div class="section-actions" aria-label="Final actions">
               <a class="button primary" href="https://apps.apple.com/app/id6739036460" data-i18n="cta.appStore">Download on the App Store</a>
@@ -656,6 +656,12 @@
       }
 
       const supportedLocales = Object.keys(locales);
+      const screenshotFiles = {
+        home: 'iphone-home.png',
+        capture: 'iphone-capture.png',
+        widgets: 'iphone-widgets.png',
+        watch: 'watch-home.png',
+      };
 
       function normalizeLocale(locale) {
         if (!locale) return 'en-US';
@@ -686,8 +692,24 @@
           const value = copy[node.dataset.i18n] || baseCopy[node.dataset.i18n];
           if (value) node.textContent = value;
         });
+        applyLocaleImages(normalized);
         document.getElementById('language-select').value = normalized;
         window.localStorage.setItem('beanledger.locale', normalized);
+      }
+
+      function applyLocaleImages(locale) {
+        document.querySelectorAll('img[data-shot]').forEach((image) => {
+          const fileName = screenshotFiles[image.dataset.shot];
+          if (!fileName) return;
+
+          const fallback = `assets/screenshots/${fileName}`;
+          const localized = `assets/screenshots/${locale}/${fileName}`;
+          image.onerror = () => {
+            image.onerror = null;
+            image.src = fallback;
+          };
+          image.src = localized;
+        });
       }
 
       document.getElementById('language-select').addEventListener('change', (event) => {
