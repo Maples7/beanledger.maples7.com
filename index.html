@@ -351,6 +351,13 @@
         align-items: start;
       }
 
+      .section-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 2rem;
+      }
+
       .footer {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -503,14 +510,18 @@
 
         <section class="section" aria-labelledby="screenshots-title">
           <div class="section-inner">
-            <p class="section-kicker" data-i18n="gallery.kicker">Screenshots</p>
-            <h2 id="screenshots-title" data-i18n="gallery.title">A ledger that stays readable at daily speed.</h2>
-            <p class="section-lede" data-i18n="gallery.lede">The same native app experience appears in App Store screenshots, on the device, and in the quick surfaces you use throughout the day.</p>
+            <p class="section-kicker" data-i18n="gallery.kicker">Daily payoff</p>
+            <h2 id="screenshots-title" data-i18n="gallery.title">Spend less time sorting money. See more of what changed.</h2>
+            <p class="section-lede" data-i18n="gallery.lede">BeanLedger keeps the loop small: record in seconds, review when it matters, and keep the long-term history under your control.</p>
             <div class="gallery" aria-label="BeanLedger screenshot gallery">
               <figure class="gallery-card"><img src="assets/screenshots/iphone-home.png" alt="BeanLedger home dashboard" width="396" height="860"></figure>
               <figure class="gallery-card"><img src="assets/screenshots/iphone-capture.png" alt="BeanLedger transaction capture" width="396" height="860"></figure>
               <figure class="gallery-card"><img src="assets/screenshots/iphone-widgets.png" alt="BeanLedger widgets" width="396" height="860"></figure>
               <figure class="gallery-card watch"><img src="assets/screenshots/watch-home.png" alt="BeanLedger Apple Watch" width="424" height="520"></figure>
+            </div>
+            <div class="section-actions" aria-label="Final actions">
+              <a class="button primary" href="https://apps.apple.com/app/id6739036460" data-i18n="cta.appStore">Download on the App Store</a>
+              <a class="button" href="https://my.feishu.cn/wiki/ZThAw9DpIiP1c5kpA5ecevW7n0g" data-i18n="cta.guide">User Guide</a>
             </div>
           </div>
         </section>
@@ -549,8 +560,8 @@
         'privacy.backup.title': 'Portable backups', 'privacy.backup.body': 'Automatic backups and restore support help keep long-term financial history recoverable.',
         'privacy.signin.title': 'No sign-in pressure', 'privacy.signin.body': 'Open the app and start. BeanLedger does not require a separate web account.',
         'privacy.pro.title': 'Pro stays practical', 'privacy.pro.body': 'BeanLedger Pro unlocks advanced features without turning the product into a hard-sell funnel.',
-        'gallery.kicker': 'Screenshots', 'gallery.title': 'A ledger that stays readable at daily speed.',
-        'gallery.lede': 'The same native app experience appears in App Store screenshots, on the device, and in the quick surfaces you use throughout the day.',
+        'gallery.kicker': 'Daily payoff', 'gallery.title': 'Spend less time sorting money. See more of what changed.',
+        'gallery.lede': 'BeanLedger keeps the loop small: record in seconds, review when it matters, and keep the long-term history under your control.',
         'footer.tagline': 'Privacy-first personal finance for iPhone, iPad, Apple Watch, widgets, and iCloud.',
         'footer.appStore': 'App Store', 'footer.guide': 'User Guide', 'footer.support': 'Support', 'footer.privacy': 'Privacy Policy', 'footer.agreement': 'User Agreement',
         metaTitle: 'BeanLedger - Privacy-first personal finance for iPhone, iPad, and Apple Watch',
@@ -580,8 +591,8 @@
           'privacy.backup.title': '可恢复的备份', 'privacy.backup.body': '自动备份与恢复支持，让长期财务历史更容易找回。',
           'privacy.signin.title': '无需登录压力', 'privacy.signin.body': '打开 app 就能开始。BeanLedger 不要求单独的网页账号。',
           'privacy.pro.title': 'Pro 保持实用', 'privacy.pro.body': 'BeanLedger Pro 解锁高级功能，但不会把产品变成强销售漏斗。',
-          'gallery.kicker': '截图', 'gallery.title': '一份能跟上日常速度的账本。',
-          'gallery.lede': '你在 App Store 截图、设备和日常快捷入口中看到的是同一套原生体验。',
+          'gallery.kicker': '日常收益', 'gallery.title': '少花时间整理，多一点财务确定感。',
+          'gallery.lede': 'BeanLedger 把记录、回顾和同步放在同一条日常路径里：几秒记一笔，需要时看清趋势，长期数据仍属于你。',
           'footer.tagline': '面向 iPhone、iPad、Apple Watch、小组件与 iCloud 的隐私优先个人财务 app。',
           'footer.guide': '用户指南', 'footer.support': '支持', 'footer.privacy': '隐私政策', 'footer.agreement': '用户协议',
           metaTitle: 'BeanLedger —— 隐私优先的 iPhone、iPad 与 Apple Watch 个人财务 app',
@@ -608,8 +619,8 @@
           'privacy.backup.title': '可恢復的備份', 'privacy.backup.body': '自動備份與恢復支援，讓長期財務歷史更容易找回。',
           'privacy.signin.title': '無需登入壓力', 'privacy.signin.body': '打開 app 就能開始。BeanLedger 不要求單獨的網頁帳號。',
           'privacy.pro.title': 'Pro 保持實用', 'privacy.pro.body': 'BeanLedger Pro 解鎖進階功能，但不會把產品變成強銷售漏斗。',
-          'gallery.kicker': '截圖', 'gallery.title': '一份能跟上日常速度的帳本。',
-          'gallery.lede': '你在 App Store 截圖、裝置和日常快捷入口中看到的是同一套原生體驗。',
+          'gallery.kicker': '日常收益', 'gallery.title': '少花時間整理，多一點財務確定感。',
+          'gallery.lede': 'BeanLedger 把記錄、回顧和同步放在同一條日常路徑裡：幾秒記一筆，需要時看清趨勢，長期資料仍屬於你。',
           'footer.tagline': '面向 iPhone、iPad、Apple Watch、小組件與 iCloud 的隱私優先個人財務 app。',
           'footer.guide': '使用者指南', 'footer.support': '支援', 'footer.privacy': '隱私政策', 'footer.agreement': '使用者協議',
           metaTitle: 'BeanLedger —— 隱私優先的 iPhone、iPad 與 Apple Watch 個人財務 app',
